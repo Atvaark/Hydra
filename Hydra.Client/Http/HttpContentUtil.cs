@@ -18,9 +18,9 @@ namespace Hydra.Client.Http
             return content;
         }
 
-        public static async Task<T> ReadJsonContent<T>(HttpContent contnet)
+        public static async Task<T> ReadJsonContent<T>(HttpContent content)
         {
-            var responseContent = await contnet.ReadAsStringAsync();
+            var responseContent = await content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<T>(responseContent);
         }
 

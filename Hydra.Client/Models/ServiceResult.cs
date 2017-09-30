@@ -2,7 +2,7 @@ using Newtonsoft.Json;
 
 namespace Hydra.Client.Models
 {
-    public class BaseResponse
+    public class ServiceResult
     {
         [JsonProperty("retCode")]
         public int retCode { get; set; }
