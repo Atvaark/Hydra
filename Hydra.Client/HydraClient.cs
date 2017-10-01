@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -143,12 +142,18 @@ namespace Hydra.Client
                 CreateUri(HydraServices.AbstractService, HydraMethods.Method3562511020674c16bed3979a9b2a9ef9));
         }
         
-        public async Task<GetContainerByNameResponse> GetContainerByName(GetContainerByNameRequest request)
+        public async Task<(GetContainerByNameResponse, SslContainer<ChampionLoadoutAbstractDataList>)> GetContainerByName(GetContainerByNameRequest request)
         {
-            // TODO: Serialize/Deserialize: application/x-hydra-binary + application/json + compress
-            return await PostAsync<GetContainerByNameRequest, GetContainerByNameResponse>(
-                request,
-                CreateUri(HydraServices.AbstractService, HydraMethods.Method4222aaa7e1254755af143c349e9a18ef));
+            return await PostHydraAsync<
+                GetContainerByNameRequest,
+                NullHydraServiceData,
+                GetContainerByNameResponse,
+                SslContainer<ChampionLoadoutAbstractDataList>>(
+                    request,
+                    NullHydraServiceData.Null,
+                    CreateUri(HydraServices.AbstractService, HydraMethods.Method4222aaa7e1254755af143c349e9a18ef),
+                    compress: true
+            );
         }
 
         public async Task<Unknown43525158cd024b78be1522899e2c8e14Response> Unknown43525158cd024b78be1522899e2c8e14(Unknown43525158cd024b78be1522899e2c8e14Request request)
@@ -699,20 +704,22 @@ namespace Hydra.Client
             return methodUrl;
         }
 
-        private async Task<TResponse> PostAsync<TRequest, TResponse>(
-            TRequest request,
+        private async Task<(TResponseHead, TResponseData)> PostHydraAsync<TRequestHead, TRequestData, TResponseHead, TResponseData>(
+            TRequestHead requestHead,
+            TRequestData requestData,
             Uri url,
             bool compress = false,
             bool expectContinue = false,
-            TimeSpan? rateLimit = null) where TResponse : ServiceResult
+            TimeSpan? rateLimit = null)
+            where TRequestHead : HydraServiceData
+            where TRequestData : HydraServiceData
+            where TResponseHead : HydraServiceResult
+            where TResponseData : HydraServiceData
         {
             HttpContent content = compress
-                ? HttpContentUtil.CreateCompressedJsonContent(request)
-                : HttpContentUtil.CreateJsonContent(request);
-
-            var requestMessage = new HttpRequestMessage(
-                HttpMethod.Post,
-                url)
+                ? HttpContentUtil.CreateCompressedHydraContent(requestHead, requestData)
+                : HttpContentUtil.CreateHydraContent(requestHead, requestData);
+            var requestMessage = new HttpRequestMessage(HttpMethod.Post, url)
             {
                 Content = content
             };
@@ -734,15 +741,88 @@ namespace Hydra.Client
 
             responseMessage.EnsureSuccessStatusCode();
 
-            TResponse response;
-            IEnumerable<string> compressHeaders;
-            if (responseMessage.Headers.TryGetValues("Compression-Enabled", out compressHeaders) && compressHeaders.Contains("true"))
+            bool compressedResponse = responseMessage.Headers.TryGetValues("Compression-Enabled", out var compressHeaders) && compressHeaders.Contains("true");
+
+            (TResponseHead, TResponseData) response;
+            if (responseMessage.Content.Headers.ContentType.MediaType == "application/x-hydra-binary")
             {
-                response = await HttpContentUtil.ReadCompressedJsonContent<TResponse>(responseMessage.Content);
+                if (compressedResponse)
+                {
+                    response = await HttpContentUtil.ReadCompressedHydraContent<TResponseHead, TResponseData>(responseMessage.Content);
+                }
+                else
+                {
+                    response = await HttpContentUtil.ReadHydraContent<TResponseHead, TResponseData>(responseMessage.Content);
+                }
             }
             else
             {
-                response = await HttpContentUtil.ReadJsonContent<TResponse>(responseMessage.Content);
+                throw new ApplicationException("Missing service response");
+            }
+            
+            if (response.Item1.retCode != 0)
+            {
+                throw ServiceFaultException.Create(response.Item1.retCode);
+            }
+
+            return response;
+        }
+
+        private async Task<TResponse> PostAsync<TRequest, TResponse>(
+            TRequest request,
+            Uri url,
+            bool compress = false,
+            bool expectContinue = false,
+            TimeSpan? rateLimit = null) where TResponse : ServiceResult
+        {
+            HttpContent content = compress
+                ? HttpContentUtil.CreateCompressedJsonContent(request)
+                : HttpContentUtil.CreateJsonContent(request);
+
+            var requestMessage = new HttpRequestMessage(HttpMethod.Post, url)
+            {
+                Content = content
+            };
+
+            requestMessage.Headers.Add("Accept", "*/*");
+
+            if (compress)
+            {
+                requestMessage.Headers.Add("Compression-Enabled", "true");
+            }
+
+            if (expectContinue)
+            {
+                requestMessage.Headers.ExpectContinue = true;
+            }
+
+            await _rateLimiter.Await(rateLimit);
+            var responseMessage = await _httpClient.SendAsync(requestMessage);
+
+            responseMessage.EnsureSuccessStatusCode();
+
+            var compressedResponse = responseMessage.Headers.TryGetValues("Compression-Enabled", out var compressHeaders) && compressHeaders.Contains("true");
+
+            TResponse response;
+            if (responseMessage.Content.Headers.ContentType.MediaType == "application/json")
+            {
+                if (compressedResponse)
+                {
+                    response = await HttpContentUtil.ReadCompressedJsonContent<TResponse>(responseMessage.Content);
+                }
+                else
+                {
+                    response = await HttpContentUtil.ReadJsonContent<TResponse>(responseMessage.Content);
+                }
+            }
+            else 
+            {
+                response = null;
+            }
+
+            if (response == null)
+            {
+                throw new ApplicationException("Missing service response");
             }
 
             if (response.retCode != 0)

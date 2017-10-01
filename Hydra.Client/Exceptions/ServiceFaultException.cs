@@ -24,7 +24,7 @@ namespace Hydra.Client.Exceptions
 
 
         public int ErrorCode { get; }
-
+        
         private ServiceFaultException(int errorCode, string message)
         : base(message)
         {

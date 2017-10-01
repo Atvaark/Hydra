@@ -289,7 +289,7 @@ namespace Hydra.Client
 
         //    // Abstract
         //    Unknown3562511020674c16bed3979a9b2a9ef9Response unknown3562511020674c16bed3979a9b2a9ef9Response = await client.Unknown3562511020674c16bed3979a9b2a9ef9(new Unknown3562511020674c16bed3979a9b2a9ef9Request()); // {"retCode":354}
-        //    GetContainerByNameResponse getContainerByNameResponse = await client.GetContainerByName(new GetContainerByNameRequest());
+        //    (GetContainerByNameResponse, SslContainer<ChampionLoadoutAbstractDataList>) getContainerByNameResponse = await client.GetContainerByName(new GetContainerByNameRequest { containerName = "loadout_private" });
         //    Unknown43525158cd024b78be1522899e2c8e14Response unknown43525158cd024b78be1522899e2c8e14Response = await client.Unknown43525158cd024b78be1522899e2c8e14(new Unknown43525158cd024b78be1522899e2c8e14Request()); // {"retCode":353}
         //    Unknown8459aa2a4bc24ba990c170cc2ffac9b4Response unknown8459aa2a4bc24ba990c170cc2ffac9b4Response = await client.Unknown8459aa2a4bc24ba990c170cc2ffac9b4(new Unknown8459aa2a4bc24ba990c170cc2ffac9b4Request()); // {"retCode":353}
 
@@ -367,7 +367,7 @@ namespace Hydra.Client
         //    Unknown1df66e3e7245462e9cbd24c6ccb78219Response unknown1df66e3e7245462e9cbd24c6ccb78219Response = await client.Unknown1df66e3e7245462e9cbd24c6ccb78219(new Unknown1df66e3e7245462e9cbd24c6ccb78219Request()); // {"retCode":347}
         //    Unknown29db08d7f205403b96d2c661c5a21fb5Response unknown29db08d7f205403b96d2c661c5a21fb5Response = await client.Unknown29db08d7f205403b96d2c661c5a21fb5(new Unknown29db08d7f205403b96d2c661c5a21fb5Request()); // {"retCode":347}
         //    OfferTransactionResponse offerTransactionResponse = await client.OfferTransaction(new OfferTransactionRequest());
-        //        Unknown672167912f854154b40175aed5a203deResponse unknown672167912f854154b40175aed5a203deResponse = await client.Unknown672167912f854154b40175aed5a203de(new Unknown672167912f854154b40175aed5a203deRequest()); // {"retCode":347}
+        //    Unknown672167912f854154b40175aed5a203deResponse unknown672167912f854154b40175aed5a203deResponse = await client.Unknown672167912f854154b40175aed5a203de(new Unknown672167912f854154b40175aed5a203deRequest()); // {"retCode":347}
         //    GetTransactionsResponse getTransactionsResponse = await client.GetTransactions(new GetTransactionsRequest());
 
         //    // User 4
