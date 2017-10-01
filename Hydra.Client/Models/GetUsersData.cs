@@ -5,7 +5,7 @@ namespace Hydra.Client.Models
     public class GetUsersData
     {
         [JsonProperty("User")]
-        public User User { get; set; }
+        public UserId User { get; set; }
 
         [JsonProperty("Nickname")]
         public string Nickname { get; set; }

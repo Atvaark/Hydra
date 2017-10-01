@@ -5,7 +5,7 @@ namespace Hydra.Client.Models
     public class Challenge
     {
         [JsonProperty("Id")]
-        public IdValue Id { get; set; }
+        public ChallengeId Id { get; set; }
 
         [JsonProperty("Definition")]
         public string Definition { get; set; }

@@ -20,6 +20,6 @@ namespace Hydra.Client.Models.Auth
         public string token { get; set; }
 
         [JsonProperty("beam_token")]
-        public object beam_token { get; set; }
+        public string[] beam_token { get; set; }
     }
 }

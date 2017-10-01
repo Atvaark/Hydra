@@ -11,7 +11,7 @@ namespace Hydra.Client.Models
         public string Nickname { get; set; }
 
         [JsonProperty("User")]
-        public User User { get; set; }
+        public UserId User { get; set; }
 
         [JsonProperty("UserStateList")]
         public UserState[] UserStateList { get; set; }

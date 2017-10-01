@@ -5,7 +5,7 @@ namespace Hydra.Client.Models
     public class ChallengeCounter
     {
         [JsonProperty("Counter")]
-        public IdValue Counter { get; set; }
+        public ChallengeCounterId Counter { get; set; }
 
         [JsonProperty("Definition")]
         public string Definition { get; set; }

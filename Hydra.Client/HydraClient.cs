@@ -7,6 +7,7 @@ using Hydra.Client.Config;
 using Hydra.Client.Exceptions;
 using Hydra.Client.Http;
 using Hydra.Client.Models;
+using Hydra.Client.Models.Hydra;
 using Hydra.Client.Models.Unknown;
 
 namespace Hydra.Client
@@ -136,14 +137,16 @@ namespace Hydra.Client
 
         public async Task<Unknown3562511020674c16bed3979a9b2a9ef9Response> Unknown3562511020674c16bed3979a9b2a9ef9(Unknown3562511020674c16bed3979a9b2a9ef9Request request)
         {
+            // TODO: Serialize/Deserialize: application/x-hydra-binary + application/json + compress
             return await PostAsync<Unknown3562511020674c16bed3979a9b2a9ef9Request, Unknown3562511020674c16bed3979a9b2a9ef9Response>(
                 request,
                 CreateUri(HydraServices.AbstractService, HydraMethods.Method3562511020674c16bed3979a9b2a9ef9));
         }
         
-        public async Task<Unknown4222aaa7e1254755af143c349e9a18efResponse> Unknown4222aaa7e1254755af143c349e9a18ef(Unknown4222aaa7e1254755af143c349e9a18efRequest request)
+        public async Task<GetContainerByNameResponse> GetContainerByName(GetContainerByNameRequest request)
         {
-            return await PostAsync<Unknown4222aaa7e1254755af143c349e9a18efRequest, Unknown4222aaa7e1254755af143c349e9a18efResponse>(
+            // TODO: Serialize/Deserialize: application/x-hydra-binary + application/json + compress
+            return await PostAsync<GetContainerByNameRequest, GetContainerByNameResponse>(
                 request,
                 CreateUri(HydraServices.AbstractService, HydraMethods.Method4222aaa7e1254755af143c349e9a18ef));
         }
@@ -260,39 +263,39 @@ namespace Hydra.Client
                 CreateUri(HydraServices.MessageService, HydraMethods.Method0e7ebdaeae61462ab6eba53337b9f509));
         }
 
-        public async Task<Unknown2cf0a2cc6a3b4365a6e1596fec1ee658Response> Unknown2cf0a2cc6a3b4365a6e1596fec1ee658(Unknown2cf0a2cc6a3b4365a6e1596fec1ee658Request request)
+        public async Task<GetMessageChannelsByNameGsaResponse> GetMessageChannelsByNameGsa(GetMessageChannelsByNameGsaRequest request)
         {
-            return await PostAsync<Unknown2cf0a2cc6a3b4365a6e1596fec1ee658Request, Unknown2cf0a2cc6a3b4365a6e1596fec1ee658Response>(
+            return await PostAsync<GetMessageChannelsByNameGsaRequest, GetMessageChannelsByNameGsaResponse>(
                 request,
-                CreateUri(HydraServices.MessageService, HydraMethods.Method2cf0a2cc6a3b4365a6e1596fec1ee658));
+                CreateUri(HydraServices.MessageService, HydraMethods.GetMessageChannelsByNameGsa));
         }
 
-        public async Task<Unknown2ff9bd7fc6f2475a9b9e042529de70f7Response> Unknown2ff9bd7fc6f2475a9b9e042529de70f7(Unknown2ff9bd7fc6f2475a9b9e042529de70f7Request request)
+        public async Task<UnknownMessageServiceResponse> UnknownMessageService(UnknownMessageServiceRequest request)
         {
-            return await PostAsync<Unknown2ff9bd7fc6f2475a9b9e042529de70f7Request, Unknown2ff9bd7fc6f2475a9b9e042529de70f7Response>(
+            return await PostAsync<UnknownMessageServiceRequest, UnknownMessageServiceResponse>(
                 request,
-                CreateUri(HydraServices.MessageService, HydraMethods.Method2ff9bd7fc6f2475a9b9e042529de70f7));
+                CreateUri(HydraServices.MessageService, HydraMethods.UnknownMessageService));
         }
         
-        public async Task<Unknown362afabd85654a57866e30b9121b3e39Response> Unknown362afabd85654a57866e30b9121b3e39(Unknown362afabd85654a57866e30b9121b3e39Request request)
+        public async Task<GetMessageChannelsResponse> GetMessageChannels(GetMessageChannelsRequest request)
         {
-            return await PostAsync<Unknown362afabd85654a57866e30b9121b3e39Request, Unknown362afabd85654a57866e30b9121b3e39Response>(
+            return await PostAsync<GetMessageChannelsRequest, GetMessageChannelsResponse>(
                 request,
-                CreateUri(HydraServices.MessageService, HydraMethods.Method362afabd85654a57866e30b9121b3e39));
+                CreateUri(HydraServices.MessageService, HydraMethods.GetMessageChannels));
         }
         
-        public async Task<Unknown7873eebd874343ca98edbb6ca48a18c1Response> Unknown7873eebd874343ca98edbb6ca48a18c1(Unknown7873eebd874343ca98edbb6ca48a18c1Request request)
+        public async Task<GetMessageChannelsByNameResponse> GetMessageChannelsByName(GetMessageChannelsByNameRequest request)
         {
-            return await PostAsync<Unknown7873eebd874343ca98edbb6ca48a18c1Request, Unknown7873eebd874343ca98edbb6ca48a18c1Response>(
+            return await PostAsync<GetMessageChannelsByNameRequest, GetMessageChannelsByNameResponse>(
                 request,
-                CreateUri(HydraServices.MessageService, HydraMethods.Method7873eebd874343ca98edbb6ca48a18c1));
+                CreateUri(HydraServices.MessageService, HydraMethods.GetMessageChannelsByName));
         }
 
-        public async Task<Unknowna692be4389e04e35b9023864e5146e97Response> Unknowna692be4389e04e35b9023864e5146e97(Unknowna692be4389e04e35b9023864e5146e97Request request)
+        public async Task<SendChannelMessageResponse> SendChannelMessage(SendChannelMessageRequest request)
         {
-            return await PostAsync<Unknowna692be4389e04e35b9023864e5146e97Request, Unknowna692be4389e04e35b9023864e5146e97Response>(
+            return await PostAsync<SendChannelMessageRequest, SendChannelMessageResponse>(
                 request,
-                CreateUri(HydraServices.MessageService, HydraMethods.Methoda692be4389e04e35b9023864e5146e97));
+                CreateUri(HydraServices.MessageService, HydraMethods.SendChannelMessage));
         }
         
         public async Task<Unknown06e4cf76e6d148769543e0774aad4b73Response> Unknown06e4cf76e6d148769543e0774aad4b73(Unknown06e4cf76e6d148769543e0774aad4b73Request request)
@@ -316,32 +319,32 @@ namespace Hydra.Client
                 CreateUri(HydraServices.PresenceService1, HydraMethods.Method1223411d79164d0497e74abf8edc922a));
         }
         
-        public async Task<Unknown2c5326857083430eb3b2e27d8a82d5c5Response> Unknown2c5326857083430eb3b2e27d8a82d5c5(Unknown2c5326857083430eb3b2e27d8a82d5c5Request request)
+        public async Task<UpdatePresenceStateResponse> UpdatePresenceState(UpdatePresenceStateRequest request)
         {
-            return await PostAsync<Unknown2c5326857083430eb3b2e27d8a82d5c5Request, Unknown2c5326857083430eb3b2e27d8a82d5c5Response>(
+            return await PostAsync<UpdatePresenceStateRequest, UpdatePresenceStateResponse>(
                 request,
-                CreateUri(HydraServices.PresenceService1, HydraMethods.Method2c5326857083430eb3b2e27d8a82d5c5));
+                CreateUri(HydraServices.PresenceService1, HydraMethods.UpdatePresenceState));
         }
         
-        public async Task<Unknown31710983bb924d55adea3c074920e52bResponse> Unknown31710983bb924d55adea3c074920e52b(Unknown31710983bb924d55adea3c074920e52bRequest request)
+        public async Task<SquadInviteResponse> SquadInvite(SquadInviteRequest request)
         {
-            return await PostAsync<Unknown31710983bb924d55adea3c074920e52bRequest, Unknown31710983bb924d55adea3c074920e52bResponse>(
+            return await PostAsync<SquadInviteRequest, SquadInviteResponse>(
                 request,
-                CreateUri(HydraServices.PresenceService1, HydraMethods.Method31710983bb924d55adea3c074920e52b));
+                CreateUri(HydraServices.PresenceService1, HydraMethods.SquadInvite));
         }
         
-        public async Task<Unknown357a419ab4ce4d89ad01275c2b513576Response> Unknown357a419ab4ce4d89ad01275c2b513576(Unknown357a419ab4ce4d89ad01275c2b513576Request request)
+        public async Task<UnknownPresenceUser2Response> UnknownPresenceUser2(UnknownPresenceUser2Request request)
         {
-            return await PostAsync<Unknown357a419ab4ce4d89ad01275c2b513576Request, Unknown357a419ab4ce4d89ad01275c2b513576Response>(
+            return await PostAsync<UnknownPresenceUser2Request, UnknownPresenceUser2Response>(
                 request,
-                CreateUri(HydraServices.PresenceService1, HydraMethods.Method357a419ab4ce4d89ad01275c2b513576));
+                CreateUri(HydraServices.PresenceService1, HydraMethods.UnknownPresenceUser2));
         }
         
-        public async Task<Unknown3a60e3c677124e76bb861d9655acf9d6Response> Unknown3a60e3c677124e76bb861d9655acf9d6(Unknown3a60e3c677124e76bb861d9655acf9d6Request request)
+        public async Task<GetUsersClientStateResponse> GetUsersClientState(GetUsersClientStateRequest request)
         {
-            return await PostAsync<Unknown3a60e3c677124e76bb861d9655acf9d6Request, Unknown3a60e3c677124e76bb861d9655acf9d6Response>(
+            return await PostAsync<GetUsersClientStateRequest, GetUsersClientStateResponse>(
                 request,
-                CreateUri(HydraServices.PresenceService1, HydraMethods.Method3a60e3c677124e76bb861d9655acf9d6));
+                CreateUri(HydraServices.PresenceService1, HydraMethods.GetUsersClientState));
         }
         
         public async Task<UnknownPresenceResponse> UnknownPresenceTournamentMatch(UnknownPresenceTournamentMatchRequest request)
@@ -351,25 +354,25 @@ namespace Hydra.Client
                 CreateUri(HydraServices.PresenceService1, HydraMethods.UnknownPresenceTournamentMatch));
         }
         
-        public async Task<Unknown4342d3041be74aebad69d24c06b8cdceResponse> Unknown4342d3041be74aebad69d24c06b8cdce(Unknown4342d3041be74aebad69d24c06b8cdceRequest request)
+        public async Task<UnknownPresenceResponse> UnknownPresenceUser1(UnknownPresenceUser1Request request)
         {
-            return await PostAsync<Unknown4342d3041be74aebad69d24c06b8cdceRequest, Unknown4342d3041be74aebad69d24c06b8cdceResponse>(
+            return await PostAsync<UnknownPresenceUser1Request, UnknownPresenceResponse>(
                 request,
-                CreateUri(HydraServices.PresenceService1, HydraMethods.Method4342d3041be74aebad69d24c06b8cdce));
+                CreateUri(HydraServices.PresenceService1, HydraMethods.UnknownPresenceUser1));
         }
 
-        public async Task<Unknown481d6938535d4379b61cd726a9b54c08Response> Unknown481d6938535d4379b61cd726a9b54c08(Unknown481d6938535d4379b61cd726a9b54c08Request request)
+        public async Task<UnknownPresenceResponse> UnknownPresenceMatchmake5(UnknownPresenceMatchmake5Request request)
         {
-            return await PostAsync<Unknown481d6938535d4379b61cd726a9b54c08Request, Unknown481d6938535d4379b61cd726a9b54c08Response>(
+            return await PostAsync<UnknownPresenceMatchmake5Request, UnknownPresenceResponse>(
                 request,
-                CreateUri(HydraServices.PresenceService1, HydraMethods.Method481d6938535d4379b61cd726a9b54c08));
+                CreateUri(HydraServices.PresenceService1, HydraMethods.UnknownPresenceMatchmake5));
         }
         
-        public async Task<Unknown495afb4580ef48d3b7d39fb625165aaaResponse> Unknown495afb4580ef48d3b7d39fb625165aaa(Unknown495afb4580ef48d3b7d39fb625165aaaRequest request)
+        public async Task<GetPlaylistsStatsResponse> GetPlaylistsStats(GetPlaylistsStatsRequest request)
         {
-            return await PostAsync<Unknown495afb4580ef48d3b7d39fb625165aaaRequest, Unknown495afb4580ef48d3b7d39fb625165aaaResponse>(
+            return await PostAsync<GetPlaylistsStatsRequest, GetPlaylistsStatsResponse>(
                 request,
-                CreateUri(HydraServices.PresenceService1, HydraMethods.Method495afb4580ef48d3b7d39fb625165aaa));
+                CreateUri(HydraServices.PresenceService1, HydraMethods.GetPlaylistsStats));
         }
         
         public async Task<Unknown77f0b9cf113141baa2d40e0ac53a6eb8Response> Unknown77f0b9cf113141baa2d40e0ac53a6eb8(Unknown77f0b9cf113141baa2d40e0ac53a6eb8Request request)
@@ -449,11 +452,11 @@ namespace Hydra.Client
                 CreateUri(HydraServices.PresenceService1, HydraMethods.UnknownPresenceMatchmake3));
         }
         
-        public async Task<Unknownb5e4f488c68d4e95959c0144330908f6Response> Unknownb5e4f488c68d4e95959c0144330908f6(Unknownb5e4f488c68d4e95959c0144330908f6Request request)
+        public async Task<MatchmakeByPlaylistResponse> MatchmakeByPlaylist(MatchmakeByPlaylistRequest request)
         {
-            return await PostAsync<Unknownb5e4f488c68d4e95959c0144330908f6Request, Unknownb5e4f488c68d4e95959c0144330908f6Response>(
+            return await PostAsync<MatchmakeByPlaylistRequest, MatchmakeByPlaylistResponse>(
                 request,
-                CreateUri(HydraServices.PresenceService1, HydraMethods.Methodb5e4f488c68d4e95959c0144330908f6));
+                CreateUri(HydraServices.PresenceService1, HydraMethods.MatchmakeByPlaylist));
         }
         
         public async Task<Unknownc2b4cc19b0a74acb8a59186f1f7119b0Response> Unknownc2b4cc19b0a74acb8a59186f1f7119b0(Unknownc2b4cc19b0a74acb8a59186f1f7119b0Request request)
@@ -463,18 +466,18 @@ namespace Hydra.Client
                 CreateUri(HydraServices.PresenceService1, HydraMethods.Methodc2b4cc19b0a74acb8a59186f1f7119b0));
         }
         
-        public async Task<Unknownd331ec8194e94c179f80ef22271475fdResponse> Unknownd331ec8194e94c179f80ef22271475fd(Unknownd331ec8194e94c179f80ef22271475fdRequest request)
+        public async Task<SendGameClientVersionResponse> SendGameClientVersion(SendGameClientVersionRequest request)
         {
-            return await PostAsync<Unknownd331ec8194e94c179f80ef22271475fdRequest, Unknownd331ec8194e94c179f80ef22271475fdResponse>(
+            return await PostAsync<SendGameClientVersionRequest, SendGameClientVersionResponse>(
                 request,
-                CreateUri(HydraServices.PresenceService1, HydraMethods.Methodd331ec8194e94c179f80ef22271475fd));
+                CreateUri(HydraServices.PresenceService1, HydraMethods.SendGameClientVersion));
         }
         
-        public async Task<Unknownd3b5c5894eaf4b5984a3da64cf492359Response> Unknownd3b5c5894eaf4b5984a3da64cf492359(Unknownd3b5c5894eaf4b5984a3da64cf492359Request request)
+        public async Task<UnknownPresenceResponse> UnknownPresenceSquad5(UnknownPresenceSquad5Request request)
         {
-            return await PostAsync<Unknownd3b5c5894eaf4b5984a3da64cf492359Request, Unknownd3b5c5894eaf4b5984a3da64cf492359Response>(
+            return await PostAsync<UnknownPresenceSquad5Request, UnknownPresenceResponse>(
                 request,
-                CreateUri(HydraServices.PresenceService1, HydraMethods.Methodd3b5c5894eaf4b5984a3da64cf492359));
+                CreateUri(HydraServices.PresenceService1, HydraMethods.UnknownPresenceSquad5));
         }
 
         public async Task<Unknownda785897995d47fc83b96b40f41bcb59Response> Unknownda785897995d47fc83b96b40f41bcb59(Unknownda785897995d47fc83b96b40f41bcb59Request request)
@@ -502,28 +505,28 @@ namespace Hydra.Client
         {
             return await PostAsync<UnknownPresenceSquad4Request, UnknownPresenceResponse>(
                 request,
-                CreateUri(HydraServices.PresenceService1, HydraMethods.MethodUnknownPresenceSquad4));
+                CreateUri(HydraServices.PresenceService1, HydraMethods.UnknownPresenceSquad4));
         }
         
         public async Task<UnknownPresenceResponse> UnknownPresenceMatchmake4(UnknownPresenceMatchmake4Request request)
         {
             return await PostAsync<UnknownPresenceMatchmake4Request, UnknownPresenceResponse>(
                 request,
-                CreateUri(HydraServices.PresenceService1, HydraMethods.MethodUnknownPresenceMatchmake4));
+                CreateUri(HydraServices.PresenceService1, HydraMethods.UnknownPresenceMatchmake4));
         }
 
         public async Task<UnknownPresenceResponse> UnknownPresenceTournament(UnknownPresenceTournamentRequest request)
         {
             return await PostAsync<UnknownPresenceTournamentRequest, UnknownPresenceResponse>(
                 request,
-                CreateUri(HydraServices.PresenceService1, HydraMethods.MethodUnknownPresenceTournament));
+                CreateUri(HydraServices.PresenceService1, HydraMethods.UnknownPresenceTournament));
         }
 
-        public async Task<Unknown2edd52375d674e52821b941778906a8bResponse> Unknown2edd52375d674e52821b941778906a8b(Unknown2edd52375d674e52821b941778906a8bRequest request)
+        public async Task<UpdateClientContextResponse> UpdateClientContext(UpdateClientContextRequest request)
         {
-            return await PostAsync<Unknown2edd52375d674e52821b941778906a8bRequest, Unknown2edd52375d674e52821b941778906a8bResponse>(
+            return await PostAsync<UpdateClientContextRequest, UpdateClientContextResponse>(
                 request,
-                CreateUri(HydraServices.PresenceService2, HydraMethods.Method2edd52375d674e52821b941778906a8b));
+                CreateUri(HydraServices.PresenceService2, HydraMethods.UpdateClientContext));
         }
 
         public async Task<Unknown3bbc298631fc402ea804318bd81c9e61Response> Unknown3bbc298631fc402ea804318bd81c9e61(Unknown3bbc298631fc402ea804318bd81c9e61Request request)
@@ -533,18 +536,18 @@ namespace Hydra.Client
                 CreateUri(HydraServices.PresenceService2, HydraMethods.Method3bbc298631fc402ea804318bd81c9e61));
         }
 
-        public async Task<Unknown10ef138f7e3a4d89be76954001d2c8e9Response> Unknown10ef138f7e3a4d89be76954001d2c8e9(Unknown10ef138f7e3a4d89be76954001d2c8e9Request request)
+        public async Task<GetDataCenterOccupationVersionedResponse> GetDataCenterOccupationVersioned(GetDataCenterOccupationVersionedRequest request)
         {
-            return await PostAsync<Unknown10ef138f7e3a4d89be76954001d2c8e9Request, Unknown10ef138f7e3a4d89be76954001d2c8e9Response>(
+            return await PostAsync<GetDataCenterOccupationVersionedRequest, GetDataCenterOccupationVersionedResponse>(
                 request,
-                CreateUri(HydraServices.UhService, HydraMethods.Method10ef138f7e3a4d89be76954001d2c8e9));
+                CreateUri(HydraServices.UhService, HydraMethods.GetDataCenterOccupationVersioned));
         }
         
-        public async Task<Unknown20ab2a71bc824d28b0336677fb4e7702Response> Unknown20ab2a71bc824d28b0336677fb4e7702(Unknown20ab2a71bc824d28b0336677fb4e7702Request request)
+        public async Task<UnknownUhGenerationResponse> UnknownUhGeneration(UnknownUhGenerationRequest request)
         {
-            return await PostAsync<Unknown20ab2a71bc824d28b0336677fb4e7702Request, Unknown20ab2a71bc824d28b0336677fb4e7702Response>(
+            return await PostAsync<UnknownUhGenerationRequest, UnknownUhGenerationResponse>(
                 request,
-                CreateUri(HydraServices.UhService, HydraMethods.Method20ab2a71bc824d28b0336677fb4e7702));
+                CreateUri(HydraServices.UhService, HydraMethods.UnknownUhGeneration));
         }
         
 
@@ -562,11 +565,11 @@ namespace Hydra.Client
                 CreateUri(HydraServices.UserService4, HydraMethods.Method605000618bbf46078491664420dd524a));
         }
 
-        public async Task<Unknown95090912d7d14fb4be6450c138ca9371Response> Unknown95090912d7d14fb4be6450c138ca9371(Unknown95090912d7d14fb4be6450c138ca9371Request request)
+        public async Task<SearchUserResponse> SearchUserNicknamePrefix(SearchUserNicknamePrefixRequest request)
         {
-            return await PostAsync<Unknown95090912d7d14fb4be6450c138ca9371Request, Unknown95090912d7d14fb4be6450c138ca9371Response>(
+            return await PostAsync<SearchUserNicknamePrefixRequest, SearchUserResponse>(
                 request,
-                CreateUri(HydraServices.UserService4, HydraMethods.Method95090912d7d14fb4be6450c138ca9371));
+                CreateUri(HydraServices.UserService4, HydraMethods.SearchUserNicknamePrefix));
         }
         
         public async Task<Unknown1df66e3e7245462e9cbd24c6ccb78219Response> Unknown1df66e3e7245462e9cbd24c6ccb78219(Unknown1df66e3e7245462e9cbd24c6ccb78219Request request)
@@ -583,11 +586,11 @@ namespace Hydra.Client
                 CreateUri(HydraServices.UserService3, HydraMethods.Method29db08d7f205403b96d2c661c5a21fb5));
         }
         
-        public async Task<Unknown48c8e3ccec72406da06c5ceb3b61307eResponse> Unknown48c8e3ccec72406da06c5ceb3b61307e(Unknown48c8e3ccec72406da06c5ceb3b61307eRequest request)
+        public async Task<OfferTransactionResponse> OfferTransaction(OfferTransactionRequest request)
         {
-            return await PostAsync<Unknown48c8e3ccec72406da06c5ceb3b61307eRequest, Unknown48c8e3ccec72406da06c5ceb3b61307eResponse>(
+            return await PostAsync<OfferTransactionRequest, OfferTransactionResponse>(
                 request,
-                CreateUri(HydraServices.UserService3, HydraMethods.Method48c8e3ccec72406da06c5ceb3b61307e));
+                CreateUri(HydraServices.UserService3, HydraMethods.OfferTransaction));
         }
         
         public async Task<Unknown672167912f854154b40175aed5a203deResponse> Unknown672167912f854154b40175aed5a203de(Unknown672167912f854154b40175aed5a203deRequest request)
@@ -597,18 +600,19 @@ namespace Hydra.Client
                 CreateUri(HydraServices.UserService3, HydraMethods.Method672167912f854154b40175aed5a203de));
         }
         
-        public async Task<Unknowne34e2a4286704499bb5d195ea4b06e62Response> Unknowne34e2a4286704499bb5d195ea4b06e62(Unknowne34e2a4286704499bb5d195ea4b06e62Request request)
+        public async Task<GetTransactionsResponse> GetTransactions(GetTransactionsRequest request)
         {
-            return await PostAsync<Unknowne34e2a4286704499bb5d195ea4b06e62Request, Unknowne34e2a4286704499bb5d195ea4b06e62Response>(
+            return await PostAsync<GetTransactionsRequest, GetTransactionsResponse>(
                 request,
-                CreateUri(HydraServices.UserService3, HydraMethods.Methode34e2a4286704499bb5d195ea4b06e62));
+                CreateUri(HydraServices.UserService3, HydraMethods.GetTransactions));
         }
         
-        public async Task<Unknown25f40aab5feb4370b3d60d5960cb5fd0Response> Unknown25f40aab5feb4370b3d60d5960cb5fd0(Unknown25f40aab5feb4370b3d60d5960cb5fd0Request request)
+        public async Task<GetFollowersResponse> GetFollowers(GetFollowersRequest request)
         {
-            return await PostAsync<Unknown25f40aab5feb4370b3d60d5960cb5fd0Request, Unknown25f40aab5feb4370b3d60d5960cb5fd0Response>(
+            return await PostAsync<GetFollowersRequest, GetFollowersResponse>(
                 request,
-                CreateUri(HydraServices.UserService1, HydraMethods.Method25f40aab5feb4370b3d60d5960cb5fd0));
+                CreateUri(HydraServices.UserService1, HydraMethods.GetFollowers),
+                compress: true);
         }
         
         public async Task<Unknown76bca0c11f104b59a6c23d8a566771efResponse> Unknown76bca0c11f104b59a6c23d8a566771ef(Unknown76bca0c11f104b59a6c23d8a566771efRequest request)
@@ -618,11 +622,12 @@ namespace Hydra.Client
                 CreateUri(HydraServices.UserService1, HydraMethods.Method76bca0c11f104b59a6c23d8a566771ef));
         }
         
-        public async Task<Unknown9ba54a165e594fb59a720d051d55f40cResponse> Unknown9ba54a165e594fb59a720d051d55f40c(Unknown9ba54a165e594fb59a720d051d55f40cRequest request)
+        public async Task<GetSubscriptionsResponse> GetSubscriptions(GetSubscriptionsRequest request)
         {
-            return await PostAsync<Unknown9ba54a165e594fb59a720d051d55f40cRequest, Unknown9ba54a165e594fb59a720d051d55f40cResponse>(
+            return await PostAsync<GetSubscriptionsRequest, GetSubscriptionsResponse>(
                 request,
-                CreateUri(HydraServices.UserService1, HydraMethods.Method9ba54a165e594fb59a720d051d55f40c));
+                CreateUri(HydraServices.UserService1, HydraMethods.GetSubscriptions),
+                compress: true);
         }
         
         public async Task<Unknownb5d139571f3b48f6a6b17743b490dfbaResponse> Unknownb5d139571f3b48f6a6b17743b490dfba(Unknownb5d139571f3b48f6a6b17743b490dfbaRequest request)
@@ -632,25 +637,26 @@ namespace Hydra.Client
                 CreateUri(HydraServices.UserService1, HydraMethods.Methodb5d139571f3b48f6a6b17743b490dfba));
         }
         
-        public async Task<Unknownd094522958ee4e47ac73e9e5a9c9b1e4Response> Unknownd094522958ee4e47ac73e9e5a9c9b1e4(Unknownd094522958ee4e47ac73e9e5a9c9b1e4Request request)
+        public async Task<UnknownUserService1Response> UnknownUserService1(UnknownUserService1Request request)
         {
-            return await PostAsync<Unknownd094522958ee4e47ac73e9e5a9c9b1e4Request, Unknownd094522958ee4e47ac73e9e5a9c9b1e4Response>(
+            return await PostAsync<UnknownUserService1Request, UnknownUserService1Response>(
                 request,
-                CreateUri(HydraServices.UserService1, HydraMethods.Methodd094522958ee4e47ac73e9e5a9c9b1e4));
+                CreateUri(HydraServices.UserService1, HydraMethods.UnknownUserService1),
+                compress: true);
         }
         
-        public async Task<Unknownef350d399b3648928dbe92660df902a3Response> Unknownef350d399b3648928dbe92660df902a3(Unknownef350d399b3648928dbe92660df902a3Request request)
+        public async Task<SubscribeUserResponse> SubscribeUser(SubscribeUserRequest request)
         {
-            return await PostAsync<Unknownef350d399b3648928dbe92660df902a3Request, Unknownef350d399b3648928dbe92660df902a3Response>(
+            return await PostAsync<SubscribeUserRequest, SubscribeUserResponse>(
                 request,
-                CreateUri(HydraServices.UserService1, HydraMethods.Methodef350d399b3648928dbe92660df902a3));
+                CreateUri(HydraServices.UserService1, HydraMethods.SubscribeUser));
         }
         
-        public async Task<Unknown6f7a1ca925674cb6b0db585cab8edb53Response> Unknown6f7a1ca925674cb6b0db585cab8edb53(Unknown6f7a1ca925674cb6b0db585cab8edb53Request request)
+        public async Task<GetChallenges2Response> GetChallenges2(GetChallenges2Request request)
         {
-            return await PostAsync<Unknown6f7a1ca925674cb6b0db585cab8edb53Request, Unknown6f7a1ca925674cb6b0db585cab8edb53Response>(
+            return await PostAsync<GetChallenges2Request, GetChallenges2Response>(
                 request,
-                CreateUri(HydraServices.UserService5, HydraMethods.Method6f7a1ca925674cb6b0db585cab8edb53));
+                CreateUri(HydraServices.UserService5, HydraMethods.GetChallenges2));
         }
         
         public async Task<Unknownbc099ffb41aa45c38525b0d40d7309a0Response> Unknownbc099ffb41aa45c38525b0d40d7309a0(Unknownbc099ffb41aa45c38525b0d40d7309a0Request request)

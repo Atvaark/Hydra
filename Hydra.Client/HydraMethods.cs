@@ -54,15 +54,15 @@ namespace Hydra.Client
 
         public const string Method0e7ebdaeae61462ab6eba53337b9f509 = "0e7ebdaeae61462ab6eba53337b9f509";
 
-        public const string Method2cf0a2cc6a3b4365a6e1596fec1ee658 = "2cf0a2cc6a3b4365a6e1596fec1ee658";
+        public const string GetMessageChannelsByNameGsa = "2cf0a2cc6a3b4365a6e1596fec1ee658";
 
-        public const string Method2ff9bd7fc6f2475a9b9e042529de70f7 = "2ff9bd7fc6f2475a9b9e042529de70f7";
+        public const string UnknownMessageService = "2ff9bd7fc6f2475a9b9e042529de70f7";
 
-        public const string Method362afabd85654a57866e30b9121b3e39 = "362afabd85654a57866e30b9121b3e39";
+        public const string GetMessageChannels = "362afabd85654a57866e30b9121b3e39";
 
-        public const string Method7873eebd874343ca98edbb6ca48a18c1 = "7873eebd874343ca98edbb6ca48a18c1";
+        public const string GetMessageChannelsByName = "7873eebd874343ca98edbb6ca48a18c1";
 
-        public const string Methoda692be4389e04e35b9023864e5146e97 = "a692be4389e04e35b9023864e5146e97";
+        public const string SendChannelMessage = "a692be4389e04e35b9023864e5146e97";
 
         public const string LoginMessaging = "c1a4fef57e2b4438ac279c627241c833";
 
@@ -72,21 +72,21 @@ namespace Hydra.Client
 
         public const string Method1223411d79164d0497e74abf8edc922a = "1223411d79164d0497e74abf8edc922a";
 
-        public const string Method2c5326857083430eb3b2e27d8a82d5c5 = "2c5326857083430eb3b2e27d8a82d5c5";
+        public const string UpdatePresenceState = "2c5326857083430eb3b2e27d8a82d5c5";
 
-        public const string Method31710983bb924d55adea3c074920e52b = "31710983bb924d55adea3c074920e52b";
+        public const string SquadInvite = "31710983bb924d55adea3c074920e52b";
 
-        public const string Method357a419ab4ce4d89ad01275c2b513576 = "357a419ab4ce4d89ad01275c2b513576";
+        public const string UnknownPresenceUser2 = "357a419ab4ce4d89ad01275c2b513576";
 
-        public const string Method3a60e3c677124e76bb861d9655acf9d6 = "3a60e3c677124e76bb861d9655acf9d6";
+        public const string GetUsersClientState = "3a60e3c677124e76bb861d9655acf9d6";
 
         public const string UnknownPresenceTournamentMatch = "3f1d578189924406a3da1598d44eaece";
 
-        public const string Method4342d3041be74aebad69d24c06b8cdce = "4342d3041be74aebad69d24c06b8cdce";
+        public const string UnknownPresenceUser1 = "4342d3041be74aebad69d24c06b8cdce";
 
-        public const string Method481d6938535d4379b61cd726a9b54c08 = "481d6938535d4379b61cd726a9b54c08";
+        public const string UnknownPresenceMatchmake5 = "481d6938535d4379b61cd726a9b54c08";
 
-        public const string Method495afb4580ef48d3b7d39fb625165aaa = "495afb4580ef48d3b7d39fb625165aaa";
+        public const string GetPlaylistsStats = "495afb4580ef48d3b7d39fb625165aaa";
 
         public const string Method77f0b9cf113141baa2d40e0ac53a6eb8 = "77f0b9cf113141baa2d40e0ac53a6eb8";
 
@@ -110,13 +110,13 @@ namespace Hydra.Client
 
         public const string UnknownPresenceMatchmake3 = "b463a20e1333425ab53b676eec1d2342";
 
-        public const string Methodb5e4f488c68d4e95959c0144330908f6 = "b5e4f488c68d4e95959c0144330908f6";
+        public const string MatchmakeByPlaylist = "b5e4f488c68d4e95959c0144330908f6";
 
         public const string Methodc2b4cc19b0a74acb8a59186f1f7119b0 = "c2b4cc19b0a74acb8a59186f1f7119b0";
 
-        public const string Methodd331ec8194e94c179f80ef22271475fd = "d331ec8194e94c179f80ef22271475fd";
+        public const string SendGameClientVersion = "d331ec8194e94c179f80ef22271475fd";
 
-        public const string Methodd3b5c5894eaf4b5984a3da64cf492359 = "d3b5c5894eaf4b5984a3da64cf492359";
+        public const string UnknownPresenceSquad5 = "d3b5c5894eaf4b5984a3da64cf492359";
 
         public const string Methodda785897995d47fc83b96b40f41bcb59 = "da785897995d47fc83b96b40f41bcb59";
 
@@ -124,19 +124,19 @@ namespace Hydra.Client
 
         public const string Methode4c06258140645bbb39c63a8a0cd230e = "e4c06258140645bbb39c63a8a0cd230e";
 
-        public const string MethodUnknownPresenceSquad4 = "e7690f64b5164d92a7ce8356dd8673f7";
+        public const string UnknownPresenceSquad4 = "e7690f64b5164d92a7ce8356dd8673f7";
 
-        public const string MethodUnknownPresenceMatchmake4 = "eb4621da0a55449f963dfeb4eb15ed37";
+        public const string UnknownPresenceMatchmake4 = "eb4621da0a55449f963dfeb4eb15ed37";
 
-        public const string MethodUnknownPresenceTournament = "f6ee61d86d6546c88d4ebee03aa3988f";
+        public const string UnknownPresenceTournament = "f6ee61d86d6546c88d4ebee03aa3988f";
 
-        public const string Method2edd52375d674e52821b941778906a8b = "2edd52375d674e52821b941778906a8b";
+        public const string UpdateClientContext = "2edd52375d674e52821b941778906a8b";
 
         public const string Method3bbc298631fc402ea804318bd81c9e61 = "3bbc298631fc402ea804318bd81c9e61";
 
-        public const string Method10ef138f7e3a4d89be76954001d2c8e9 = "10ef138f7e3a4d89be76954001d2c8e9";
+        public const string GetDataCenterOccupationVersioned = "10ef138f7e3a4d89be76954001d2c8e9";
 
-        public const string Method20ab2a71bc824d28b0336677fb4e7702 = "20ab2a71bc824d28b0336677fb4e7702";
+        public const string UnknownUhGeneration = "20ab2a71bc824d28b0336677fb4e7702";
 
         public const string GetDataCenterOccupation = "afba8b534d4e40acbb22f0580a6489cb";
 
@@ -146,7 +146,7 @@ namespace Hydra.Client
 
         public const string Method605000618bbf46078491664420dd524a = "605000618bbf46078491664420dd524a";
 
-        public const string Method95090912d7d14fb4be6450c138ca9371 = "95090912d7d14fb4be6450c138ca9371";
+        public const string SearchUserNicknamePrefix = "95090912d7d14fb4be6450c138ca9371";
 
         public const string GetUserInventory = "d240545c28b84eb0b794322cacacabba";
 
@@ -154,29 +154,29 @@ namespace Hydra.Client
 
         public const string Method29db08d7f205403b96d2c661c5a21fb5 = "29db08d7f205403b96d2c661c5a21fb5";
 
-        public const string Method48c8e3ccec72406da06c5ceb3b61307e = "48c8e3ccec72406da06c5ceb3b61307e";
+        public const string OfferTransaction = "48c8e3ccec72406da06c5ceb3b61307e";
 
         public const string Method672167912f854154b40175aed5a203de = "672167912f854154b40175aed5a203de";
 
         public const string SendExternalSessionToken = "80fc4dae1e9f4a56b744439cb243d9ca";
 
-        public const string Methode34e2a4286704499bb5d195ea4b06e62 = "e34e2a4286704499bb5d195ea4b06e62";
+        public const string GetTransactions = "e34e2a4286704499bb5d195ea4b06e62";
 
-        public const string Method25f40aab5feb4370b3d60d5960cb5fd0 = "25f40aab5feb4370b3d60d5960cb5fd0";
+        public const string GetFollowers = "25f40aab5feb4370b3d60d5960cb5fd0";
 
         public const string Method76bca0c11f104b59a6c23d8a566771ef = "76bca0c11f104b59a6c23d8a566771ef";
 
-        public const string Method9ba54a165e594fb59a720d051d55f40c = "9ba54a165e594fb59a720d051d55f40c";
+        public const string GetSubscriptions = "9ba54a165e594fb59a720d051d55f40c";
 
         public const string Methodb5d139571f3b48f6a6b17743b490dfba = "b5d139571f3b48f6a6b17743b490dfba";
 
-        public const string Methodd094522958ee4e47ac73e9e5a9c9b1e4 = "d094522958ee4e47ac73e9e5a9c9b1e4";
+        public const string UnknownUserService1 = "d094522958ee4e47ac73e9e5a9c9b1e4";
 
-        public const string Methodef350d399b3648928dbe92660df902a3 = "ef350d399b3648928dbe92660df902a3";
+        public const string SubscribeUser = "ef350d399b3648928dbe92660df902a3";
 
         public const string GetChallenges = "48c0fc9485284f828ec17b1ed14b6890";
 
-        public const string Method6f7a1ca925674cb6b0db585cab8edb53 = "6f7a1ca925674cb6b0db585cab8edb53";
+        public const string GetChallenges2 = "6f7a1ca925674cb6b0db585cab8edb53";
 
         public const string Methodbc099ffb41aa45c38525b0d40d7309a0 = "bc099ffb41aa45c38525b0d40d7309a0";
 
