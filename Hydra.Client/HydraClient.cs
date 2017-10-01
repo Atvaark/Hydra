@@ -717,10 +717,7 @@ namespace Hydra.Client
             bool compress = false,
             bool expectContinue = false,
             TimeSpan? rateLimit = null)
-            where TRequestHead : HydraServiceData
-            where TRequestData : HydraServiceData
-            where TResponseHead : HydraServiceResult
-            where TResponseData : HydraServiceData
+            where TResponseHead : ServiceResult
         {
             HttpContent content = compress
                 ? HttpContentUtil.CreateCompressedHydraContent(requestHead, requestData)

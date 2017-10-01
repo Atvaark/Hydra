@@ -1,6 +1,6 @@
 ﻿namespace Hydra.Client.Models.Hydra
 {
-    public class UpdateContainerResponse : HydraServiceResult
+    public class UpdateContainerResponse : ServiceResult
     {
     }
 }

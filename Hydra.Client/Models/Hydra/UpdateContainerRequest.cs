@@ -2,7 +2,7 @@
 
 namespace Hydra.Client.Models.Hydra
 {
-    public class UpdateContainerRequest : HydraServiceData
+    public class UpdateContainerRequest
     {
         [JsonProperty("containerName")]
         public string containerName { get; set; }

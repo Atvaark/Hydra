@@ -14,10 +14,8 @@ namespace Hydra.Client.Http
     {
         public static HttpContent CreateHydraContent<TRequestHead, TRequestData>(
             TRequestHead objHead, TRequestData objData)
-            where TRequestHead : HydraServiceData
-            where TRequestData : HydraServiceData
         {
-            var serialized = SerializeHydraData(objHead, objData);
+            var serialized = SerializeHydraMessage(objHead, objData);
             var content = new ByteArrayContent(serialized);
             content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/x-hydra-binary");
             return content;
@@ -25,19 +23,17 @@ namespace Hydra.Client.Http
 
         public static HttpContent CreateCompressedHydraContent<TRequestHead, TRequestData>(
             TRequestHead objHead, TRequestData objData)
-            where TRequestHead : HydraServiceData
-            where TRequestData : HydraServiceData
         {
-            var serialized = SerializeHydraData(objHead, objData);
+            var serialized = SerializeHydraMessage(objHead, objData);
             var content = CompressContent(serialized);
             content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/x-hydra-binary");
             return content;
         }
 
-        private static byte[] SerializeHydraData(HydraServiceData head, HydraServiceData data)
+        private static byte[] SerializeHydraMessage(object head, object data)
         {
-            byte[] headBytes = SerializeHydraServiceData1(head);
-            byte[] dataBytes = SerializeHydraServiceData1(data);
+            byte[] headBytes = SerializeHydraData(head);
+            byte[] dataBytes = SerializeHydraData(data);
 
             MemoryStream stream = new MemoryStream();
             BinaryWriter streamWriter = new BinaryWriter(stream, Encoding.ASCII, true);
@@ -51,7 +47,7 @@ namespace Hydra.Client.Http
             return stream.ToArray();
         }
 
-        private static byte[] SerializeHydraServiceData1(HydraServiceData data)
+        private static byte[] SerializeHydraData(object data)
         {
             switch (data)
             {
@@ -66,7 +62,6 @@ namespace Hydra.Client.Http
         }
 
         private static T DeserializeHydraServiceData<T>(byte[] rawData)
-            where T : HydraServiceData
         {
             T data = Activator.CreateInstance<T>();
             switch (data)
@@ -86,8 +81,6 @@ namespace Hydra.Client.Http
         }
         
         internal static async Task<(TResponseHead, TResponseData)> ReadHydraContent<TResponseHead, TResponseData>(HttpContent content)
-            where TResponseHead : HydraServiceData
-            where TResponseData : HydraServiceData
         {
             using (var stream = await content.ReadAsStreamAsync())
             {
@@ -96,8 +89,6 @@ namespace Hydra.Client.Http
         }
         
         internal static async Task<(TResponseHead, TResponseData)> ReadCompressedHydraContent<TResponseHead, TResponseData>(HttpContent content)
-            where TResponseHead : HydraServiceData
-            where TResponseData : HydraServiceData
         {
             byte[] outputBytes = await DecompressContent(content);
             var stream = new MemoryStream(outputBytes);
@@ -105,8 +96,6 @@ namespace Hydra.Client.Http
         }
 
         private static (TResponseHead, TResponseData) ReadHydraData<TResponseHead, TResponseData>(Stream stream)
-            where TResponseHead : HydraServiceData
-            where TResponseData : HydraServiceData
         {
             using (var streamReader = new BinaryReader(stream, Encoding.ASCII, true))
             {
