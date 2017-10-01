@@ -288,8 +288,10 @@ namespace Hydra.Client
         //    Unknowna187495943b54cdca28ab8355bbe5898Response unknowna187495943b54cdca28ab8355bbe5898Response = await client.Unknowna187495943b54cdca28ab8355bbe5898(new Unknowna187495943b54cdca28ab8355bbe5898Request()); // RequestContext binary version mismatch. Expected '9'. Received '61116'
 
         //    // Abstract
-        //    Unknown3562511020674c16bed3979a9b2a9ef9Response unknown3562511020674c16bed3979a9b2a9ef9Response = await client.Unknown3562511020674c16bed3979a9b2a9ef9(new Unknown3562511020674c16bed3979a9b2a9ef9Request()); // {"retCode":354}
-        //    (GetContainerByNameResponse, SslContainer<ChampionLoadoutAbstractDataList>) getContainerByNameResponse = await client.GetContainerByName(new GetContainerByNameRequest { containerName = "loadout_private" });
+        //    (GetContainerByNameResponse, SslContainer<ChampionLoadoutAbstractDataList>) getContainerByNameResponse = await client.GetContainer<ChampionLoadoutAbstractDataList>(new GetContainerByNameRequest { containerName = "loadout_private" });
+        //    var updateContainerRequest = new UpdateContainerRequest { containerName = getContainerByNameResponse.Item1.data.ContainerName, data = getContainerByNameResponse.Item1.data.Records.First().Record };
+        //    updateContainerRequest.data.Version += 1;
+        //    UpdateContainerResponse updateContainerResponse = await client.UpdateContainer(updateContainerRequest, getContainerByNameResponse.Item2);
         //    Unknown43525158cd024b78be1522899e2c8e14Response unknown43525158cd024b78be1522899e2c8e14Response = await client.Unknown43525158cd024b78be1522899e2c8e14(new Unknown43525158cd024b78be1522899e2c8e14Request()); // {"retCode":353}
         //    Unknown8459aa2a4bc24ba990c170cc2ffac9b4Response unknown8459aa2a4bc24ba990c170cc2ffac9b4Response = await client.Unknown8459aa2a4bc24ba990c170cc2ffac9b4(new Unknown8459aa2a4bc24ba990c170cc2ffac9b4Request()); // {"retCode":353}
 

@@ -134,24 +134,30 @@ namespace Hydra.Client
                 CreateUri(HydraServices.SharedService, HydraMethods.Methoda187495943b54cdca28ab8355bbe5898));
         }
 
-        public async Task<Unknown3562511020674c16bed3979a9b2a9ef9Response> Unknown3562511020674c16bed3979a9b2a9ef9(Unknown3562511020674c16bed3979a9b2a9ef9Request request)
+        public async Task<UpdateContainerResponse> UpdateContainer<T>(UpdateContainerRequest request, SslContainer<T> requestData) where T : SslType
         {
-            // TODO: Serialize/Deserialize: application/x-hydra-binary + application/json + compress
-            return await PostAsync<Unknown3562511020674c16bed3979a9b2a9ef9Request, Unknown3562511020674c16bed3979a9b2a9ef9Response>(
+            var response = await PostHydraAsync<
+                UpdateContainerRequest,
+                SslContainer<T>,
+                UpdateContainerResponse,
+                NullHydraServiceData>(
                 request,
-                CreateUri(HydraServices.AbstractService, HydraMethods.Method3562511020674c16bed3979a9b2a9ef9));
+                requestData,
+                CreateUri(HydraServices.AbstractService, HydraMethods.UpdateContainer),
+                compress: true);
+            return response.Item1;
         }
         
-        public async Task<(GetContainerByNameResponse, SslContainer<ChampionLoadoutAbstractDataList>)> GetContainerByName(GetContainerByNameRequest request)
+        public async Task<(GetContainerByNameResponse, SslContainer<T>)> GetContainer<T>(GetContainerByNameRequest request) where T: SslType
         {
             return await PostHydraAsync<
                 GetContainerByNameRequest,
                 NullHydraServiceData,
                 GetContainerByNameResponse,
-                SslContainer<ChampionLoadoutAbstractDataList>>(
+                SslContainer<T>>(
                     request,
                     NullHydraServiceData.Null,
-                    CreateUri(HydraServices.AbstractService, HydraMethods.Method4222aaa7e1254755af143c349e9a18ef),
+                    CreateUri(HydraServices.AbstractService, HydraMethods.GetContainer),
                     compress: true
             );
         }
@@ -703,7 +709,7 @@ namespace Hydra.Client
             var methodUrl = new Uri(baseUri, method);
             return methodUrl;
         }
-
+        
         private async Task<(TResponseHead, TResponseData)> PostHydraAsync<TRequestHead, TRequestData, TResponseHead, TResponseData>(
             TRequestHead requestHead,
             TRequestData requestData,

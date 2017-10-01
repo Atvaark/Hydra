@@ -6,9 +6,9 @@ namespace Hydra.Client
 
         public const string GetEnvironments = "dc967910e5f347b0a9ca67822ae58469";
 
-        public const string Method3562511020674c16bed3979a9b2a9ef9 = "3562511020674c16bed3979a9b2a9ef9";
+        public const string UpdateContainer = "3562511020674c16bed3979a9b2a9ef9";
 
-        public const string Method4222aaa7e1254755af143c349e9a18ef = "4222aaa7e1254755af143c349e9a18ef";
+        public const string GetContainer = "4222aaa7e1254755af143c349e9a18ef";
 
         public const string Method43525158cd024b78be1522899e2c8e14 = "43525158cd024b78be1522899e2c8e14";
 
