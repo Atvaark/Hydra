@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -61,26 +63,50 @@ namespace Hydra.Client.Http
             }
         }
 
-        private static T DeserializeHydraServiceData<T>(byte[] rawData)
+        private static List<T> DeserializeHydraServiceData<T>(MemoryStream dataStream)
         {
+            List<T> dataList = new List<T>();
+
             T data = Activator.CreateInstance<T>();
             switch (data)
             {
                 case NullHydraServiceData _:
+                    dataList.Add(data);
                     break;
                 case RawHydraServiceData raw:
-                    raw.Data = rawData;
+                    raw.Data = dataStream.ToArray();
+                    dataList.Add(data);
                     break;
                 default:
-                    var json = Encoding.UTF8.GetString(rawData);
-                    JsonConvert.PopulateObject(json, data);
+                    if (dataStream.Length == 0)
+                    {
+                        break;
+                    }
+
+                    using (var steamReader = new StreamReader(dataStream, Encoding.UTF8, false, 4096, true))
+                    using (var jsonTextReader = new JsonTextReader(steamReader) { SupportMultipleContent = true, CloseInput = false})
+                    {
+                        var jsonSerializer = new JsonSerializer();
+
+                        if (jsonTextReader.Read())
+                        {
+                            jsonSerializer.Populate(jsonTextReader, data);
+                            dataList.Add(data);
+                        }
+
+                        while (jsonTextReader.Read())
+                        {
+                            data = jsonSerializer.Deserialize<T>(jsonTextReader);
+                            dataList.Add(data);
+                        }
+                    }
                     break;
             }
 
-            return data;
+            return dataList;
         }
         
-        internal static async Task<(TResponseHead, TResponseData)> ReadHydraContent<TResponseHead, TResponseData>(HttpContent content)
+        internal static async Task<(TResponseHead, ICollection<TResponseData>)> ReadHydraContent<TResponseHead, TResponseData>(HttpContent content)
         {
             using (var stream = await content.ReadAsStreamAsync())
             {
@@ -88,14 +114,14 @@ namespace Hydra.Client.Http
             }
         }
         
-        internal static async Task<(TResponseHead, TResponseData)> ReadCompressedHydraContent<TResponseHead, TResponseData>(HttpContent content)
+        internal static async Task<(TResponseHead, ICollection<TResponseData>)> ReadCompressedHydraContent<TResponseHead, TResponseData>(HttpContent content)
         {
             byte[] outputBytes = await DecompressContent(content);
             var stream = new MemoryStream(outputBytes);
             return ReadHydraData<TResponseHead, TResponseData>(stream);
         }
 
-        private static (TResponseHead, TResponseData) ReadHydraData<TResponseHead, TResponseData>(Stream stream)
+        private static (TResponseHead, ICollection<TResponseData>) ReadHydraData<TResponseHead, TResponseData>(Stream stream)
         {
             using (var streamReader = new BinaryReader(stream, Encoding.ASCII, true))
             {
@@ -105,11 +131,21 @@ namespace Hydra.Client.Http
 
                 byte[] headBytes = streamReader.ReadBytes(headSize);
                 byte[] dataBytes = streamReader.ReadBytes(dataSize);
-                
-                TResponseHead head = DeserializeHydraServiceData<TResponseHead>(headBytes);
-                TResponseData data = DeserializeHydraServiceData<TResponseData>(dataBytes);
 
-                return (head, data);
+                List<TResponseHead> heads;
+                using (var headStream = new MemoryStream(headBytes))
+                {
+                    heads = DeserializeHydraServiceData<TResponseHead>(headStream);
+                }
+                TResponseHead head = heads.FirstOrDefault();
+
+                List<TResponseData> datas;
+                using (var dataStream = new MemoryStream(dataBytes))
+                {
+                    datas = DeserializeHydraServiceData<TResponseData>(dataStream);
+                }
+                
+                return (head, datas);
             }
         }
 

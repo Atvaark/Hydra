@@ -8,11 +8,11 @@ namespace Hydra.Client
 
         public const string UpdateContainer = "3562511020674c16bed3979a9b2a9ef9";
 
-        public const string GetContainer = "4222aaa7e1254755af143c349e9a18ef";
+        public const string GetContainerByName = "4222aaa7e1254755af143c349e9a18ef";
 
         public const string Method43525158cd024b78be1522899e2c8e14 = "43525158cd024b78be1522899e2c8e14";
 
-        public const string Method8459aa2a4bc24ba990c170cc2ffac9b4 = "8459aa2a4bc24ba990c170cc2ffac9b4";
+        public const string GetContainerByUserId = "8459aa2a4bc24ba990c170cc2ffac9b4";
 
         public const string UnknownAuth = "4feef4755e444b9eaec78c6643812cd9";
 

@@ -2,7 +2,7 @@ using Newtonsoft.Json;
 
 namespace Hydra.Client.Models.Hydra
 {
-    public class GetContainerByNameResponse : ServiceResult
+    public class GetContainerResponse : ServiceResult
     {
         [JsonProperty("data")]
         public ContainerData data { get; set; }

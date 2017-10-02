@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -148,16 +149,16 @@ namespace Hydra.Client
             return response.Item1;
         }
         
-        public async Task<(GetContainerByNameResponse, SslContainer<T>)> GetContainer<T>(GetContainerByNameRequest request) where T: SslType
+        public async Task<(GetContainerResponse response, ICollection<SslContainer<T>> data)> GetContainerByName<T>(GetContainerByNameRequest request) where T: SslType
         {
             return await PostHydraAsync<
                 GetContainerByNameRequest,
                 NullHydraServiceData,
-                GetContainerByNameResponse,
+                GetContainerResponse,
                 SslContainer<T>>(
                     request,
                     NullHydraServiceData.Null,
-                    CreateUri(HydraServices.AbstractService, HydraMethods.GetContainer),
+                    CreateUri(HydraServices.AbstractService, HydraMethods.GetContainerByName),
                     compress: true
             );
         }
@@ -169,11 +170,18 @@ namespace Hydra.Client
                 CreateUri(HydraServices.AbstractService, HydraMethods.Method43525158cd024b78be1522899e2c8e14));
         }
 
-        public async Task<Unknown8459aa2a4bc24ba990c170cc2ffac9b4Response> Unknown8459aa2a4bc24ba990c170cc2ffac9b4(Unknown8459aa2a4bc24ba990c170cc2ffac9b4Request request)
+        public async Task<(GetContainerResponse response, ICollection<SslContainer<T>> data)> GetContainerByUserId<T>(GetContainerByUserIdRequest request)
+            where T : SslType
         {
-            return await PostAsync<Unknown8459aa2a4bc24ba990c170cc2ffac9b4Request, Unknown8459aa2a4bc24ba990c170cc2ffac9b4Response>(
+            return await PostHydraAsync<
+                GetContainerByUserIdRequest,
+                NullHydraServiceData,
+                GetContainerResponse,
+                SslContainer<T>>(
                 request,
-                CreateUri(HydraServices.AbstractService, HydraMethods.Method8459aa2a4bc24ba990c170cc2ffac9b4));
+                NullHydraServiceData.Null,
+                CreateUri(HydraServices.AbstractService, HydraMethods.GetContainerByUserId),
+                compress: true);
         }
         
         public async Task<UnknownAuthResponse> UnknownAuth(UnknownAuthRequest request)
@@ -225,9 +233,9 @@ namespace Hydra.Client
                 CreateUri(HydraServices.DiagnosticService, HydraMethods.Method75f49a6bb7374463aecc191755b88ef8));
         }
         
-        public async Task<Unknown8d3bb2f3cfa54bb0a7e3d3eabb83329aResponse> Unknown8d3bb2f3cfa54bb0a7e3d3eabb83329a(Unknown8d3bb2f3cfa54bb0a7e3d3eabb83329aRequest request)
+        public async Task<Unknown8d3bb2f3cfa54bb0a7e3d3eabb83329aResponse> Unknown8d3bb2f3cfa54bb0a7e3d3eabb83329a(SendLogRequest request)
         {
-            return await PostAsync<Unknown8d3bb2f3cfa54bb0a7e3d3eabb83329aRequest, Unknown8d3bb2f3cfa54bb0a7e3d3eabb83329aResponse>(
+            return await PostAsync<SendLogRequest, Unknown8d3bb2f3cfa54bb0a7e3d3eabb83329aResponse>(
                 request,
                 CreateUri(HydraServices.DiagnosticService, HydraMethods.Method8d3bb2f3cfa54bb0a7e3d3eabb83329a));
         }
@@ -710,7 +718,7 @@ namespace Hydra.Client
             return methodUrl;
         }
         
-        private async Task<(TResponseHead, TResponseData)> PostHydraAsync<TRequestHead, TRequestData, TResponseHead, TResponseData>(
+        private async Task<(TResponseHead, ICollection<TResponseData>)> PostHydraAsync<TRequestHead, TRequestData, TResponseHead, TResponseData>(
             TRequestHead requestHead,
             TRequestData requestData,
             Uri url,
@@ -746,7 +754,7 @@ namespace Hydra.Client
 
             bool compressedResponse = responseMessage.Headers.TryGetValues("Compression-Enabled", out var compressHeaders) && compressHeaders.Contains("true");
 
-            (TResponseHead, TResponseData) response;
+            (TResponseHead, ICollection<TResponseData>) response;
             if (responseMessage.Content.Headers.ContentType.MediaType == "application/x-hydra-binary")
             {
                 if (compressedResponse)
