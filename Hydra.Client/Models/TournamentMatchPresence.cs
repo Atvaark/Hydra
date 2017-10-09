@@ -8,6 +8,6 @@ namespace Hydra.Client.Models
         public int Version { get; set; }
 
         [JsonProperty("Status")]
-        public object Status { get; set; }
+        public TournamentMatchStatus Status { get; set; }
     }
 }

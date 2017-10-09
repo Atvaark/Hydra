@@ -8,7 +8,7 @@ namespace Hydra.Client.Models
         public long Version { get; set; }
 
         [JsonProperty("UserEvents")]
-        public object[] UserEvents { get; set; }
+        public PresenceEvent[] UserEvents { get; set; }
 
         [JsonProperty("Penalty")]
         public int Penalty { get; set; }

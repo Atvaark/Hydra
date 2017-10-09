@@ -11,6 +11,6 @@ namespace Hydra.Client.Models
         public int fromTransactionId { get; set; }
 
         [JsonProperty("count")]
-        public object count { get; set; }
+        public int? count { get; set; }
     }
 }

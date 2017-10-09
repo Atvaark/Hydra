@@ -14,6 +14,6 @@ namespace Hydra.Client.Models
         public SquadInviteEvent[] InviteEvents { get; set; }
 
         [JsonProperty("SquadEvents")]
-        public object[] SquadEvents { get; set; }
+        public PresenceEvent[] SquadEvents { get; set; }
     }
 }

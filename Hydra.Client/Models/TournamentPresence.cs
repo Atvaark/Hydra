@@ -5,7 +5,7 @@ namespace Hydra.Client.Models
     public class TournamentPresence
     {
         [JsonProperty("ScheduledMatches")]
-        public object[] ScheduledMatches { get; set; }
+        public ScheduledTournamentMatch[] ScheduledMatches { get; set; }
 
         [JsonProperty("Version")]
         public int Version { get; set; }

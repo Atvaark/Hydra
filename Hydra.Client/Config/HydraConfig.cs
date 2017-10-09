@@ -83,8 +83,7 @@ namespace Hydra.Client.Config
         
         private HydraService GetHydraService(string name)
         {
-            HydraService service;
-            if (!_serviceMap.TryGetValue(name, out service))
+            if (!_serviceMap.TryGetValue(name, out HydraService service))
             {
                 throw new HydraException($"Unknown service name: {name}");
             }

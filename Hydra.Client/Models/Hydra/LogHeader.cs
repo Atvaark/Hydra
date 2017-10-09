@@ -26,7 +26,7 @@ namespace Hydra.Client.Models.Hydra
         public long InitTime { get; set; }
 
         [JsonProperty("Context")]
-        public object[] Context { get; set; }
+        public LogHeaderContext[] Context { get; set; }
 
         [JsonProperty("StartTime")]
         public long StartTime { get; set; }

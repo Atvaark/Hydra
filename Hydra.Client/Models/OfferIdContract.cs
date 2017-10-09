@@ -11,6 +11,6 @@ namespace Hydra.Client.Models
         public string ReferenceId { get; set; }
 
         [JsonProperty("Price")]
-        public object Price { get; set; }
+        public int? Price { get; set; }
     }
 }
