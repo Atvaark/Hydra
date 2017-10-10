@@ -2,7 +2,7 @@ using Newtonsoft.Json;
 
 namespace Hydra.Client.Models
 {
-    public class GetDataCenterRequest
+    public class ConnectToEnvironmentRequest
     {
         [JsonProperty("dataCenterId")]
         public string dataCenterId { get; set; }

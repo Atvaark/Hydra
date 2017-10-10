@@ -2,7 +2,7 @@ using Newtonsoft.Json;
 
 namespace Hydra.Client.Models
 {
-    public class SendMessageForUserRequest
+    public class SendPrivateMessageRequest
     {
         [JsonProperty("forUser")]
         public UserId forUser { get; set; }

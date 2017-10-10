@@ -2,9 +2,9 @@ namespace Hydra.Client
 {
     public static class HydraMethods
     {
-        public const string GetDataCenter = "a187495943b54cdca28ab8355bbe5898";
+        public const string ConnectToEnvironment = "a187495943b54cdca28ab8355bbe5898";
 
-        public const string GetEnvironments = "dc967910e5f347b0a9ca67822ae58469";
+        public const string GetEnvironmentList = "dc967910e5f347b0a9ca67822ae58469";
 
         public const string UpdateContainer = "3562511020674c16bed3979a9b2a9ef9";
 
@@ -20,7 +20,7 @@ namespace Hydra.Client
 
         public const string UnknownToken = "b1bc148e35584649988168206925a63e";
 
-        public const string UnknownAuthToken = "3e61b8fd7afe45df9bc37786a3bb621e";
+        public const string GetProviderToken = "3e61b8fd7afe45df9bc37786a3bb621e";
 
         public const string GetTokens = "645f1997ddae4939b88364ed93777cff";
 
@@ -52,7 +52,7 @@ namespace Hydra.Client
 
         public const string GetGameconfig3 = "818178d3eec145d6adc2f35a6d241ccd";
 
-        public const string SendMessageForUser = "0e7ebdaeae61462ab6eba53337b9f509";
+        public const string SendPrivateMessage = "0e7ebdaeae61462ab6eba53337b9f509";
 
         public const string GetMessageChannelsByNameGsa = "2cf0a2cc6a3b4365a6e1596fec1ee658";
 
@@ -88,7 +88,7 @@ namespace Hydra.Client
 
         public const string GetPlaylistsStats = "495afb4580ef48d3b7d39fb625165aaa";
 
-        public const string SendEloRatingPresence = "77f0b9cf113141baa2d40e0ac53a6eb8";
+        public const string ResetRatings = "77f0b9cf113141baa2d40e0ac53a6eb8";
 
         public const string SendTournamentMatchPresenceResponse = "7903a8b8d4ce455da96449ac0d862121";
 
@@ -110,7 +110,7 @@ namespace Hydra.Client
 
         public const string UnknownPresenceMatchmake3 = "b463a20e1333425ab53b676eec1d2342";
 
-        public const string MatchmakeByPlaylist = "b5e4f488c68d4e95959c0144330908f6";
+        public const string ReportDatacenterStats = "b5e4f488c68d4e95959c0144330908f6";
 
         public const string UnknownPresence4 = "c2b4cc19b0a74acb8a59186f1f7119b0";
 
@@ -138,13 +138,13 @@ namespace Hydra.Client
 
         public const string UnknownUhGeneration = "20ab2a71bc824d28b0336677fb4e7702";
 
-        public const string GetDataCenterOccupation = "afba8b534d4e40acbb22f0580a6489cb";
+        public const string GetDataCenterOccupationStats = "afba8b534d4e40acbb22f0580a6489cb";
 
         public const string ChangeNickname = "255c934598874d688ac024552a4c8184";
 
         public const string GetUsers = "38b391c62c2a47409c1b03a2e43750ed";
 
-        public const string GetProviderUsers = "605000618bbf46078491664420dd524a";
+        public const string RequestUserPublicDataByProviderId = "605000618bbf46078491664420dd524a";
 
         public const string SearchUserNicknamePrefix = "95090912d7d14fb4be6450c138ca9371";
 
@@ -162,23 +162,23 @@ namespace Hydra.Client
 
         public const string GetTransactions = "e34e2a4286704499bb5d195ea4b06e62";
 
-        public const string GetFollowers = "25f40aab5feb4370b3d60d5960cb5fd0";
+        public const string GetUserSubscribers = "25f40aab5feb4370b3d60d5960cb5fd0";
 
-        public const string SendUserId = "76bca0c11f104b59a6c23d8a566771ef";
+        public const string SubscriptionRemove = "76bca0c11f104b59a6c23d8a566771ef";
 
-        public const string GetSubscriptions = "9ba54a165e594fb59a720d051d55f40c";
+        public const string GetUserSubscription = "9ba54a165e594fb59a720d051d55f40c";
 
-        public const string ChangeUserIgnoreList = "b5d139571f3b48f6a6b17743b490dfba";
+        public const string UpdateUserIgnoreList = "b5d139571f3b48f6a6b17743b490dfba";
 
-        public const string UnknownUserService1 = "d094522958ee4e47ac73e9e5a9c9b1e4";
+        public const string GetUserIgnoreList = "d094522958ee4e47ac73e9e5a9c9b1e4";
 
-        public const string SubscribeUser = "ef350d399b3648928dbe92660df902a3";
+        public const string SubscriptionAdd = "ef350d399b3648928dbe92660df902a3";
 
-        public const string GetChallenges = "48c0fc9485284f828ec17b1ed14b6890";
+        public const string ChallengesGetAll = "48c0fc9485284f828ec17b1ed14b6890";
 
-        public const string GetChallenges2 = "6f7a1ca925674cb6b0db585cab8edb53";
+        public const string ChallengesGetRerollTokenStatus = "6f7a1ca925674cb6b0db585cab8edb53";
 
-        public const string GetChallenge = "bc099ffb41aa45c38525b0d40d7309a0";
+        public const string RerollChallenge = "bc099ffb41aa45c38525b0d40d7309a0";
 
         public const string UpgradeRune = "8117a48a84f942dea6e057c53f06fbe5";
     }

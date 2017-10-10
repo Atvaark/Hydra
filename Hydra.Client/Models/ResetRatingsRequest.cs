@@ -2,7 +2,7 @@ using Newtonsoft.Json;
 
 namespace Hydra.Client.Models
 {
-    public class SendEloRatingPresenceRequest
+    public class ResetRatingsRequest
     {
         [JsonProperty("eloRating")]
         public int eloRating { get; set; }

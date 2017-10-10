@@ -2,7 +2,7 @@
 
 namespace Hydra.Client.Models
 {
-    public class GetDataCenterOccupationResponse : ServiceResult
+    public class GetDataCenterOccupationStatsResponse : ServiceResult
     {
         [JsonProperty("data")]
         public GetDataCenterOccupationData data { get; set; }

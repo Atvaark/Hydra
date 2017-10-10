@@ -1,6 +1,6 @@
 ﻿namespace Hydra.Client.Models
 {
-    public class GetChallengesRequest
+    public class ChallengesGetAllRequest
     {
     }
 }

@@ -2,7 +2,7 @@ using Newtonsoft.Json;
 
 namespace Hydra.Client.Models
 {
-    public class GetProviderUsersResponse : ServiceResult
+    public class RequestUserPublicDataByProviderIdResponse : ServiceResult
     {
         [JsonProperty("data")]
         public ProviderUser[] data { get; set; }

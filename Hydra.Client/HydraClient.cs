@@ -63,17 +63,17 @@ namespace Hydra.Client
                 CreateUri(HydraServices.AuthService1, HydraMethods.RefreshTokens));
         }
 
-        public async Task<GetEnvironmentsResponse> GetEnvironments(GetEnvironmentsRequest request)
+        public async Task<ConnectToEnvironmentResponse> GetEnvironmentList(GetEnvironmentListRequest request)
         {
-            return await PostAsync<GetEnvironmentsRequest, GetEnvironmentsResponse>(
+            return await PostAsync<GetEnvironmentListRequest, ConnectToEnvironmentResponse>(
                 request,
-                CreateUri(HydraServices.SharedService, HydraMethods.GetEnvironments),
+                CreateUri(HydraServices.SharedService, HydraMethods.GetEnvironmentList),
                 expectContinue: true);
         }
 
-        public async Task<GetTokensResponse> GetTokens(GetTokensRequest request)
+        public async Task<GetProviderTokenResponse> GetTokens(GetTokensRequest request)
         {
-            return await PostAsync<GetTokensRequest, GetTokensResponse>(
+            return await PostAsync<GetTokensRequest, GetProviderTokenResponse>(
                 request,
                 CreateUri(HydraServices.AuthService2, HydraMethods.GetTokens),
                 expectContinue: true);
@@ -97,19 +97,19 @@ namespace Hydra.Client
                 expectContinue: true);
         }
 
-        public async Task<GetChallengesResponse> GetChallenges(GetChallengesRequest request)
+        public async Task<GetChallengesResponse> ChallengesGetAll(ChallengesGetAllRequest request)
         {
-            return await PostAsync<GetChallengesRequest, GetChallengesResponse>(
+            return await PostAsync<ChallengesGetAllRequest, GetChallengesResponse>(
                 request,
-                CreateUri(HydraServices.UserService5, HydraMethods.GetChallenges),
+                CreateUri(HydraServices.UserService5, HydraMethods.ChallengesGetAll),
                 compress: true);
         }
 
-        public async Task<GetDataCenterOccupationResponse> GetDataCenterOccupation(GetDataCenterOccupationRequest request)
+        public async Task<GetDataCenterOccupationStatsResponse> GetDataCenterOccupationStats(GetDataCenterOccupationStatsRequest request)
         {
-            return await PostAsync<GetDataCenterOccupationRequest, GetDataCenterOccupationResponse>(
+            return await PostAsync<GetDataCenterOccupationStatsRequest, GetDataCenterOccupationStatsResponse>(
                 request,
-                CreateUri(HydraServices.UhService, HydraMethods.GetDataCenterOccupation));
+                CreateUri(HydraServices.UhService, HydraMethods.GetDataCenterOccupationStats));
         }
         
 
@@ -127,12 +127,12 @@ namespace Hydra.Client
                 CreateUri(HydraServices.MessageService, HydraMethods.SendExternalSessionToken));
         }
         
-        public async Task<GetEnvironmentsResponse> GetDataCenter(GetDataCenterRequest request)
+        public async Task<ConnectToEnvironmentResponse> ConnectToEnvironment(ConnectToEnvironmentRequest request)
         {
             // Untested
-            return await PostAsync<GetDataCenterRequest, GetEnvironmentsResponse>(
+            return await PostAsync<ConnectToEnvironmentRequest, ConnectToEnvironmentResponse>(
                 request,
-                CreateUri(HydraServices.SharedService, HydraMethods.GetDataCenter));
+                CreateUri(HydraServices.SharedService, HydraMethods.ConnectToEnvironment));
         }
 
         public async Task<UpdateContainerResponse> UpdateContainer<T>(UpdateContainerRequest request, SslContainer<T> requestData) where T : SslType
@@ -199,12 +199,12 @@ namespace Hydra.Client
                 CreateUri(HydraServices.AuthService1, HydraMethods.UnknownToken));
         }
         
-        public async Task<GetTokensResponse> UnknownAuthToken(UnknownAuthTokenRequest request)
+        public async Task<GetProviderTokenResponse> GetProviderToken(GetProviderTokenRequest request)
         {
             // Untested
-            return await PostAsync<UnknownAuthTokenRequest, GetTokensResponse>(
+            return await PostAsync<GetProviderTokenRequest, GetProviderTokenResponse>(
                 request,
-                CreateUri(HydraServices.AuthService2, HydraMethods.UnknownAuthToken));
+                CreateUri(HydraServices.AuthService2, HydraMethods.GetProviderToken));
         }
         
         public async Task<CheckTokenBanResponse> CheckTokenBan(CheckTokenBanRequest request)
@@ -287,12 +287,12 @@ namespace Hydra.Client
                 CreateUri(HydraServices.GameconfigService3, HydraMethods.GetGameconfig3));
         }
         
-        public async Task<ServiceResult> SendMessageForUser(SendMessageForUserRequest request)
+        public async Task<ServiceResult> SendPrivateMessage(SendPrivateMessageRequest request)
         {
             // Untested
-            return await PostAsync<SendMessageForUserRequest, ServiceResult>(
+            return await PostAsync<SendPrivateMessageRequest, ServiceResult>(
                 request,
-                CreateUri(HydraServices.MessageService, HydraMethods.SendMessageForUser));
+                CreateUri(HydraServices.MessageService, HydraMethods.SendPrivateMessage));
         }
 
         public async Task<GetMessageChannelsByNameGsaResponse> GetMessageChannelsByNameGsa(GetMessageChannelsByNameGsaRequest request)
@@ -409,12 +409,12 @@ namespace Hydra.Client
                 CreateUri(HydraServices.PresenceService1, HydraMethods.GetPlaylistsStats));
         }
         
-        public async Task<ServiceResult> SendEloRatingPresence(SendEloRatingPresenceRequest request)
+        public async Task<ServiceResult> ResetRatings(ResetRatingsRequest request)
         {
             // Untested
-            return await PostAsync<SendEloRatingPresenceRequest, ServiceResult>(
+            return await PostAsync<ResetRatingsRequest, ServiceResult>(
                 request,
-                CreateUri(HydraServices.PresenceService1, HydraMethods.SendEloRatingPresence));
+                CreateUri(HydraServices.PresenceService1, HydraMethods.ResetRatings));
         }
 
         public async Task<UnknownPresenceResponse> SendTournamentMatchPresence(SendTournamentMatchPresenceRequest request)
@@ -490,11 +490,11 @@ namespace Hydra.Client
                 CreateUri(HydraServices.PresenceService1, HydraMethods.UnknownPresenceMatchmake3));
         }
         
-        public async Task<MatchmakeByPlaylistResponse> MatchmakeByPlaylist(MatchmakeByPlaylistRequest request)
+        public async Task<ReportDatacenterStatsResponse> ReportDatacenterStats(ReportDatacenterStatsRequest request)
         {
-            return await PostAsync<MatchmakeByPlaylistRequest, MatchmakeByPlaylistResponse>(
+            return await PostAsync<ReportDatacenterStatsRequest, ReportDatacenterStatsResponse>(
                 request,
-                CreateUri(HydraServices.PresenceService1, HydraMethods.MatchmakeByPlaylist));
+                CreateUri(HydraServices.PresenceService1, HydraMethods.ReportDatacenterStats));
         }
         
         public async Task<UnknownPresenceResponse> UnknownPresence4(UnknownPresence4Request request)
@@ -573,6 +573,7 @@ namespace Hydra.Client
 
         public async Task<GetSessionsPagedResponse> GetSessionsPaged(GetSessionsPagedRequest request)
         {
+            // Untested
             return await PostAsync<GetSessionsPagedRequest, GetSessionsPagedResponse>(
                 request,
                 CreateUri(HydraServices.PresenceService2, HydraMethods.GetSessionsPaged));
@@ -595,16 +596,18 @@ namespace Hydra.Client
 
         public async Task<ServiceResult> ChangeNickname(ChangeNicknameRequest request)
         {
+            // Untested
             return await PostAsync<ChangeNicknameRequest, ServiceResult>(
                 request,
                 CreateUri(HydraServices.UserService4, HydraMethods.ChangeNickname));
         }
         
-        public async Task<GetProviderUsersResponse> GetProviderUsers(GetProviderUsersRequest request)
+        public async Task<RequestUserPublicDataByProviderIdResponse> RequestUserPublicDataByProviderId(RequestUserPublicDataByProviderIdRequest request)
         {
-            return await PostAsync<GetProviderUsersRequest, GetProviderUsersResponse>(
+            // Untested
+            return await PostAsync<RequestUserPublicDataByProviderIdRequest, RequestUserPublicDataByProviderIdResponse>(
                 request,
-                CreateUri(HydraServices.UserService4, HydraMethods.GetProviderUsers));
+                CreateUri(HydraServices.UserService4, HydraMethods.RequestUserPublicDataByProviderId));
         }
 
         public async Task<SearchUserResponse> SearchUsersByNicknamePrefix(SearchUsersByNicknamePrefixRequest request)
@@ -616,6 +619,7 @@ namespace Hydra.Client
         
         public async Task<ServiceResult> GiftSend(GiftSendRequest request)
         {
+            // Untested
             return await PostAsync<GiftSendRequest, ServiceResult>(
                 request,
                 CreateUri(HydraServices.UserService3, HydraMethods.GiftSend));
@@ -623,6 +627,7 @@ namespace Hydra.Client
         
         public async Task<ServiceResult> GiftAccept(GiftAcceptRequest request)
         {
+            // Untested
             return await PostAsync<GiftAcceptRequest, ServiceResult>(
                 request,
                 CreateUri(HydraServices.UserService3, HydraMethods.GiftAccept));
@@ -637,6 +642,7 @@ namespace Hydra.Client
         
         public async Task<ServiceResult> GiftReject(GiftRejectRequest request)
         {
+            // Untested
             return await PostAsync<GiftRejectRequest, ServiceResult>(
                 request,
                 CreateUri(HydraServices.UserService3, HydraMethods.GiftReject));
@@ -649,67 +655,71 @@ namespace Hydra.Client
                 CreateUri(HydraServices.UserService3, HydraMethods.GetTransactions));
         }
         
-        public async Task<GetFollowersResponse> GetFollowers(GetFollowersRequest request)
+        public async Task<GetUserSubscribersResponse> GetUserSubscribers(GetUserSubscribers request)
         {
-            return await PostAsync<GetFollowersRequest, GetFollowersResponse>(
+            return await PostAsync<GetUserSubscribers, GetUserSubscribersResponse>(
                 request,
-                CreateUri(HydraServices.UserService1, HydraMethods.GetFollowers),
+                CreateUri(HydraServices.UserService1, HydraMethods.GetUserSubscribers),
                 compress: true);
         }
         
-        public async Task<ServiceResult> SendUserId(SendUserIdRequest request)
+        public async Task<ServiceResult> SubscriptionRemove(SubscriptionRemoveRequest request)
         {
-            return await PostAsync<SendUserIdRequest, ServiceResult>(
+            // Untested
+            return await PostAsync<SubscriptionRemoveRequest, ServiceResult>(
                 request,
-                CreateUri(HydraServices.UserService1, HydraMethods.SendUserId));
+                CreateUri(HydraServices.UserService1, HydraMethods.SubscriptionRemove));
         }
         
-        public async Task<GetSubscriptionsResponse> GetSubscriptions(GetSubscriptionsRequest request)
+        public async Task<GetUserSubscriptionResponse> GetUserSubscription(GetUserSubscriptionRequest request)
         {
-            return await PostAsync<GetSubscriptionsRequest, GetSubscriptionsResponse>(
+            return await PostAsync<GetUserSubscriptionRequest, GetUserSubscriptionResponse>(
                 request,
-                CreateUri(HydraServices.UserService1, HydraMethods.GetSubscriptions),
+                CreateUri(HydraServices.UserService1, HydraMethods.GetUserSubscription),
                 compress: true);
         }
         
-        public async Task<ChangeUserIgnoreListResponse> ChangeUserIgnoreList(ChangeUserIgnoreListRequest request)
+        public async Task<UpdateUserIgnoreListResponse> UpdateUserIgnoreList(UpdateUserIgnoreListRequest request)
         {
-            return await PostAsync<ChangeUserIgnoreListRequest, ChangeUserIgnoreListResponse>(
+            // Untested
+            return await PostAsync<UpdateUserIgnoreListRequest, UpdateUserIgnoreListResponse>(
                 request,
-                CreateUri(HydraServices.UserService1, HydraMethods.ChangeUserIgnoreList));
+                CreateUri(HydraServices.UserService1, HydraMethods.UpdateUserIgnoreList));
         }
         
-        public async Task<UnknownUserService1Response> UnknownUserService1(UnknownUserService1Request request)
+        public async Task<GetUserIgnoreListResponse> GetUserIgnoreList(GetUserIgnoreListRequest request)
         {
-            return await PostAsync<UnknownUserService1Request, UnknownUserService1Response>(
+            return await PostAsync<GetUserIgnoreListRequest, GetUserIgnoreListResponse>(
                 request,
-                CreateUri(HydraServices.UserService1, HydraMethods.UnknownUserService1),
+                CreateUri(HydraServices.UserService1, HydraMethods.GetUserIgnoreList),
                 compress: true);
         }
         
-        public async Task<SubscribeUserResponse> SubscribeUser(SubscribeUserRequest request)
+        public async Task<SubscribeUserResponse> SubscriptionAdd(SubscriptionAddRequest request)
         {
-            return await PostAsync<SubscribeUserRequest, SubscribeUserResponse>(
+            return await PostAsync<SubscriptionAddRequest, SubscribeUserResponse>(
                 request,
-                CreateUri(HydraServices.UserService1, HydraMethods.SubscribeUser));
+                CreateUri(HydraServices.UserService1, HydraMethods.SubscriptionAdd));
         }
         
-        public async Task<GetChallengesResponse> GetChallenges2(GetChallenges2Request request)
+        public async Task<GetChallengesResponse> ChallengesGetRerollTokenStatus(ChallengesGetRerollTokenStatusRequest request)
         {
-            return await PostAsync<GetChallenges2Request, GetChallengesResponse>(
+            return await PostAsync<ChallengesGetRerollTokenStatusRequest, GetChallengesResponse>(
                 request,
-                CreateUri(HydraServices.UserService5, HydraMethods.GetChallenges2));
+                CreateUri(HydraServices.UserService5, HydraMethods.ChallengesGetRerollTokenStatus));
         }
         
-        public async Task<GetChallengeResponse> GetChallenge(GetChallengeRequest request)
+        public async Task<GetChallengeResponse> RerollChallenge(RerollChallengeRequest request)
         {
-            return await PostAsync<GetChallengeRequest, GetChallengeResponse>(
+            // Untested
+            return await PostAsync<RerollChallengeRequest, GetChallengeResponse>(
                 request,
-                CreateUri(HydraServices.UserService5, HydraMethods.GetChallenge));
+                CreateUri(HydraServices.UserService5, HydraMethods.RerollChallenge));
         }
         
         public async Task<ServiceResult> UpgradeRune(UpgradeRuneRequest request)
         {
+            // Untested
             return await PostAsync<UpgradeRuneRequest, ServiceResult>(
                 request,
                 CreateUri(HydraServices.UserService2, HydraMethods.UpgradeRune));

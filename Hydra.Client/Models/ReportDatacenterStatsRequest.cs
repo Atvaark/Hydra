@@ -2,7 +2,7 @@ using Newtonsoft.Json;
 
 namespace Hydra.Client.Models
 {
-    public class MatchmakeByPlaylistRequest
+    public class ReportDatacenterStatsRequest
     {
         [JsonProperty("playlist")]
         public string playlist { get; set; }

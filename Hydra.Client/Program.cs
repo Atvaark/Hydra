@@ -6,6 +6,7 @@ using Hydra.Client.Config;
 using Hydra.Client.Http;
 using Hydra.Client.Models;
 using Hydra.Client.Models.Auth;
+using Hydra.Client.Models.Hydra;
 
 namespace Hydra.Client
 {
@@ -139,7 +140,7 @@ namespace Hydra.Client
                 });
 
             Console.WriteLine("Getting environments");
-            var environments = await client.GetEnvironments(new GetEnvironmentsRequest
+            var environments = await client.GetEnvironmentList(new GetEnvironmentListRequest
             {
                 versions = hydraConfig.GetServiceVersions()
             });
@@ -242,7 +243,7 @@ namespace Hydra.Client
 
             //await client.SendExternalSessionToken(new SendExternalSessionTokenRequest { externalSessionToken = tokens.data.ProviderToken });
 
-            //GetChallengesResponse challenges = await client.GetChallenges(new GetChallengesRequest());
+            //GetChallengesResponse challenges = await client.ChallengesGetAll(new ChallengesGetAllRequest());
             //GetUserInventoryResponse userInventory = await client.GetUserInventory(new GetUserInventoryRequest());
 
             //GetUsersResponse users = await client.GetUsers(new GetUsersRequest
@@ -256,7 +257,7 @@ namespace Hydra.Client
             //    }
             //});
 
-            GetDataCenterOccupationResponse occupation = await client.GetDataCenterOccupation(new GetDataCenterOccupationRequest
+            GetDataCenterOccupationStatsResponse occupation = await client.GetDataCenterOccupationStats(new GetDataCenterOccupationStatsRequest
             {
                 generation = 1,
                 state = 1
@@ -285,7 +286,7 @@ namespace Hydra.Client
         //    //UnknownPresenceResponse unknownPresenceTournamentMatchResponse = await client.UnknownPresenceTournamentMatch(new UnknownPresenceTournamentMatchRequest());
 
         //    // Shared
-        //    GetEnvironmentsResponse getDataCenterResponse = await client.GetDataCenter(new GetDataCenterRequest());
+        //    ConnectToEnvironmentResponse connectToDataCenterResponse = await client.ConnectToEnvironment(new ConnectToEnvironmentRequest());
 
         //    // Abstract
         //    //(GetContainerResponse response, ICollection<SslContainer<ChampionLoadoutAbstractDataList>> data) getContainerByNameResponse = await client.GetContainerByName<ChampionLoadoutAbstractDataList>(new GetContainerByNameRequest { containerName = "loadout_private" });
@@ -297,7 +298,7 @@ namespace Hydra.Client
         //    //(GetContainerResponse response, ICollection<SslContainer<ChampionLoadoutAbstractDataList>> data) getContainerByUserIdResponse = await client.GetContainerByUserId<ChampionLoadoutAbstractDataList>(new GetContainerByUserIdRequest { containerName = "loadout_private", keys = new[] { Guid.Empty.ToString("D") } });
 
         //    // Auth 2
-        //    GetTokensResponse unknownAuthTokenResponse = await client.UnknownAuthToken(new UnknownAuthTokenRequest());
+        //    GetProviderTokenResponse unknownAuthTokenResponse = await client.GetProviderToken(new GetProviderTokenRequest());
         //    CheckTokenBanResponse checkTokenBanResponse = await client.CheckTokenBan(new CheckTokenBanRequest());
         //    LoginResponse unknownLoginResponse = await client.UnknownLogin(new UnknownLoginRequest());
 
@@ -318,12 +319,12 @@ namespace Hydra.Client
         //    GetGameconfig3Response getGameconfig3Response = await client.GetGameconfig3(new GetGameconfig3Request());
 
         //    // Message
-        //    ServiceResult sendMessageForUserResponse = await client.SendMessageForUser(new SendMessageForUserRequest());
+        //    ServiceResult sendMessageForUserResponse = await client.SendPrivateMessage(new SendPrivateMessageRequest());
+        //    //SendChannelMessageResponse sendChannelMessageResponse = await client.SendChannelMessage(new SendChannelMessageRequest());
         //    //GetMessageChannelsByNameGsaResponse getMessageChannelsByNameGsaResponse = await client.GetMessageChannelsByNameGsa(new GetMessageChannelsByNameGsaRequest());
         //    //UnknownMessageServiceResponse unknownMessageServiceResponse = await client.UnknownMessageService(new UnknownMessageServiceRequest());
         //    //GetMessageChannelsResponse getMessageChannelsResponse = await client.GetMessageChannels(new GetMessageChannelsRequest());
         //    //GetMessageChannelsByNameResponse getMessageChannelsByNameResponse = await client.GetMessageChannelsByName(new GetMessageChannelsByNameRequest());
-        //    //SendChannelMessageResponse sendChannelMessageResponse = await client.SendChannelMessage(new SendChannelMessageRequest());
 
         //    // Presence 1
         //    UnknownPresenceResponse unknownPresence3Response = await client.UnknownPresence3(new UnknownPresence3Request());
@@ -335,11 +336,11 @@ namespace Hydra.Client
         //    //UnknownPresenceResponse unknownPresenceUser1Response = await client.UnknownPresenceUser1(new UnknownPresenceUser1Request());
         //    //UnknownPresenceResponse unknownPresenceMatchmake5Response = await client.UnknownPresenceMatchmake5(new UnknownPresenceMatchmake5Request());
         //    //GetPlaylistsStatsResponse getPlaylistsStatsResponse = await client.GetPlaylistsStats(new GetPlaylistsStatsRequest());
-        //    ServiceResult sendEloRatingPresenceResponse = await client.SendEloRatingPresence(new SendEloRatingPresenceRequest());
+        //    ServiceResult resetRatingsResponse = await client.ResetRatings(new ResetRatingsRequest());
         //    UnknownPresenceResponse sendTournamentMatchPresenceResponse = await client.SendTournamentMatchPresence(new SendTournamentMatchPresenceRequest());
         //    UnknownPresenceResponse unknownPresenceSquadInvite2Response = await client.UnknownPresenceSquadInvite2(new SquadInvitePresenceRequest());
         //    UnknownPresenceResponse unknownPresenceSquadInvite3Response = await client.UnknownPresenceSquadInvite3(new SquadInvitePresenceRequest());
-        //    //MatchmakeByPlaylistResponse unknownb5e4f488c68d4e95959c0144330908f6Response = await client.MatchmakeByPlaylist(new MatchmakeByPlaylistRequest());
+        //    //ReportDatacenterStatsResponse reportDatacenterStatsResponse = await client.ReportDatacenterStats(new ReportDatacenterStatsRequest());
         //    UnknownPresenceResponse unknownPresence4Response = await client.UnknownPresence4(new UnknownPresence4Request());
         //    //SendGameClientVersionResponse sendGameClientVersionResponse = await client.SendGameClientVersion(new SendGameClientVersionRequest());
         //    //UnknownPresenceResponse unknownPresenceSquad5Response = await client.UnknownPresenceSquad5(new UnknownPresenceSquad5Request());
@@ -356,12 +357,12 @@ namespace Hydra.Client
         //    //UnknownUhGenerationResponse unknownUhGenerationResponse = await client.UnknownUhGeneration(new UnknownUhGenerationRequest());
 
         //    // User 1
-        //    //GetFollowersResponse getFollowersResponse = await client.GetFollowers(new GetFollowersRequest());
-        //    ServiceResult sendUserIdResponse = await client.SendUserId(new SendUserIdRequest());
-        //    //GetSubscriptionsResponse getSubscriptionsResponse = await client.GetSubscriptions(new GetSubscriptionsRequest());
-        //    ChangeUserIgnoreListResponse changeUserIgnoreListResponse = await client.ChangeUserIgnoreList(new ChangeUserIgnoreListRequest());
-        //    //UnknownUserService1Response unknownUserService1Response = await client.UnknownUserService1(new UnknownUserService1Request());
-        //    //SubscribeUserResponse subscribeUserResponse = await client.SubscribeUser(new SubscribeUserRequest());
+        //    //GetUserSubscribersResponse getUserSubscribersResponse = await client.GetUserSubscribers(new GetUserSubscribers());
+        //    ServiceResult subscriptionRemove = await client.SubscriptionRemove(new SubscriptionRemoveRequest());
+        //    //GetUserSubscriptionResponse getUserSubscriptionResponse = await client.GetUserSubscription(new GetUserSubscriptionRequest());
+        //    UpdateUserIgnoreListResponse updateUserIgnoreListResponse = await client.UpdateUserIgnoreList(new UpdateUserIgnoreListRequest());
+        //    GetUserIgnoreListResponse getUserIgnoreListResponse = await client.GetUserIgnoreList(new GetUserIgnoreListRequest());
+        //    //SubscribeUserResponse subscribeUserResponse = await client.SubscriptionAdd(new SubscriptionAddRequest());
 
         //    // User 2
         //    ServiceResult upgradeRuneResponse = await client.UpgradeRune(new UpgradeRuneRequest());
@@ -375,12 +376,12 @@ namespace Hydra.Client
 
         //    // User 4
         //    ServiceResult sendNicknameResponse = await client.ChangeNickname(new ChangeNicknameRequest());
-        //    GetProviderUsersResponse getProviderUsersResponse = await client.GetProviderUsers(new GetProviderUsersRequest());
+        //    RequestUserPublicDataByProviderIdResponse requestUserPublicDataByProviderIdResponse = await client.RequestUserPublicDataByProviderId(new RequestUserPublicDataByProviderIdRequest());
         //    //SearchUserResponse searchUserResponse = await client.SearchUsersByNicknamePrefix(new SearchUsersByNicknamePrefixRequest());
 
         //    // User 5
-        //    //GetChallengesResponse getChallenges2Response = await client.GetChallenges2(new GetChallenges2Request());
-        //    GetChallengeResponse getChallengeResponse = await client.GetChallenge(new GetChallengeRequest());
+        //    GetChallengesResponse getChallenges2Response = await client.ChallengesGetRerollTokenStatus(new ChallengesGetRerollTokenStatusRequest());
+        //    GetChallengeResponse getChallengeResponse = await client.RerollChallenge(new RerollChallengeRequest());
         //}
     }
 }
